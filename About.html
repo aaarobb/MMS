@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Math Made Simple</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #334155;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --light: #f8fafc;
+            --text: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(to bottom, #f1f5f9 0%, #e2e8f0 100%);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--light);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none !important;
+            }
+
+            .nav-links {
+                position: static;
+                display: flex;
+                flex-direction: row;
+                width: auto;
+                height: auto;
+                background: transparent;
+                padding: 0;
+                box-shadow: none;
+            }
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--light);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .main-content {
+            padding-top: 120px;
+            min-height: 100vh;
+            padding-bottom: 4rem;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 3rem 5% 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 400;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .team-section {
+            padding: 3rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /*grid layouts*/
+        .founder-grid {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .codirectors-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            max-width: 600px;
+            margin: 3rem auto;
+            justify-items: center;
+        }
+
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 900px;
+            margin: 3rem auto;
+            justify-items: center;
+        }
+
+        .volunteers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInScale 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .team-member:nth-child(1) { animation-delay: 0.1s; }
+        .team-member:nth-child(2) { animation-delay: 0.15s; }
+        .team-member:nth-child(3) { animation-delay: 0.2s; }
+        .team-member:nth-child(4) { animation-delay: 0.25s; }
+        .team-member:nth-child(5) { animation-delay: 0.3s; }
+        .team-member:nth-child(6) { animation-delay: 0.35s; }
+        .team-member:nth-child(7) { animation-delay: 0.4s; }
+        .team-member:nth-child(8) { animation-delay: 0.45s; }
+
+        .headshot {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+            margin-bottom: 1.2rem;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .team-member:hover .headshot {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.25);
+            border-color: var(--accent-light);
+        }
+/*containers*/
+        .headshot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .member-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+        }
+
+        .member-school {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .contact-footer {
+            background: var(--light);
+            padding: 3rem 5%;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .contact-footer h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .contact-info a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                gap: 2rem;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .codirectors-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .board-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .volunteers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 2rem;
+            }
+
+            .headshot {
+                width: 150px;
+                height: 150px;
+            }
+
+            .member-name {
+                font-size: 1rem;
+            }
+
+            .member-school {
+                font-size: 0.85rem;
+            }
+
+            .contact-footer {
+                padding: 2.5rem 5%;
+            }
+
+            .contact-footer h3 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .board-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .volunteers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .headshot {
+                width: 130px;
+                height: 130px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-footer h3 {
+                font-size: 1.5rem;
+            }
+
+            .contact-info {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Math Made Simple</div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Tutoring.html">Tutoring</a></li>
+            <li><a href="Community.html">Community Projects</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <section class="page-header">
+            <h1>About Us</h1>
+            <p>
+                Meet our dedicated team of tutors and mentors. Each brings a unique background and a shared passion for helping students thrive. Scroll to explore everyone!
+            </p>
+        </section>
+
+        <!--founder-->
+        <section class="team-section">
+            <div class="founder-grid">
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/keshav.PNG" alt="Keshav Harpavat">
+                    </div>
+                    <div class="member-name">Keshav Harpavat</div>
+                    <div class="member-title">Founder</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+            </div>
+        </section>
+
+        <!--codirectors-->
+        <section class="team-section">
+            <h2 class="section-title">Executive Board</h2>
+            <div class="codirectors-grid">
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/update1/aarav.png" alt="Aarav">
+                    </div>
+                    <div class="member-name">Aarav Mahendru</div>
+                    <div class="member-title">Director of Operations</div>
+                    <div class="member-school">Lamar High School</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/aaron.png" alt="Aaron">
+                    </div>
+                    <div class="member-name">Aaron Wang</div>
+                    <div class="member-title">Director of Outreach</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+            </div>
+
+            <!--rest of board-->
+            <div class="board-grid">
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/update1/parrie.png" alt="Parrie">
+                    </div>
+                    <div class="member-name">Parrie Charoenrattanaruk</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Tyler">
+                    </div>
+                    <div class="member-name">Tyler Horvath</div>
+                    <div class="member-school">Lamar High School</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/ian.jpg" alt="Ian">
+                    </div>
+                    <div class="member-name">Ian Ngo</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+            
+               
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/update1/preston.png" alt="Preston">
+                    </div>
+                    <div class="member-name">Preston Bennet</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/matthew.jpeg" alt="Matthew">
+                    </div>
+                    <div class="member-name">Matthew Jumalon</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/rodri.jpeg" alt="Rodri">
+                    </div>
+                    <div class="member-name">Rodri Celma</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                
+              
+            </div>
+        </section>
+
+        <!--volunteers -->
+        <section class="team-section">
+            <h2 class="section-title">Volunteers</h2>
+            <div class="volunteers-grid">
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Roger Li</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Gabriel Fernandes</div>
+                    <div class="member-school">Purdue University</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Anika Harpavat</div>
+                    <div class="member-school">Stanford University</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Ani Bellows</div>
+                    <div class="member-school">University of Texas at Austin</div>
+                    <div class="member-title">Media Manager</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Mac Stratton</div>
+                    <div class="member-school">Rice University</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/update1/faysal.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Faysal Alameddine</div>
+                    <div class="member-school">Georgetown University</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Kevin Chen</div>
+                    <div class="member-school">Stanford University</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/update1/braden.jpeg" alt="Volunter">
+                    </div>
+                    <div class="member-name">Braden Tollar</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/update1/clare.heic" alt="Volunter">
+                    </div>
+                    <div class="member-name">Clare Hayes</div>
+                    <div class="member-school">University of Notre Dame</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/dorine.jpeg" alt="Volunter">
+                    </div>
+                    <div class="member-name">Dorine Zolfaghari</div>
+                    <div class="member-school">Clements High School</div>
+                    <div class="member-title">E.N.G.I.N.E. Partner</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Aylin Korkmaz</div>
+                    <div class="member-school">Clements High School</div>
+                    <div class="member-title">E.N.G.I.N.E. Partner</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Ava Cobb</div>
+                    <div class="member-school">Clements High School</div>
+                    <div class="member-title">E.N.G.I.N.E. Partner</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Mateo Varcarcel</div>
+                    <div class="member-school">Texas A&M</div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Samuel Estrada</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Amar Singh</div>
+                    <div class="member-school">Southwestern University</div>
+                </div>
+               
+                <div class="team-member">
+                    <div class="headshot"><img src="/Media/Headshots/yousseff.png" alt="Volunter"></div>
+                    <div class="member-name">Youssef Abouelazm</div>
+                    <div class="member-school">Clements High School</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot"><img src="Media/Headshots/update1/pruneda.jpeg" alt="Volunter">
+                    </div>
+                    <div class="member-name">Mateo Pruneda</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot"><img src="Media/Headshots/update1/diego.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Diego Pruneda</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+              
+                <div class="team-member">
+                    <div class="headshot"><img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Taniya Mehta</div>
+                    <div class="member-school">Clements High School</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot"><img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Alexander Stansberry</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot"><img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">John Davis</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Hudson Chu</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Matthew Mamera</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/1.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Dylan Jett</div>
+                    <div class="member-school">The Kinkaid School</div>
+                </div>
+
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/update1/asher.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Asher Desai</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/update1/BB.heic" alt="Volunter">
+                    </div>
+                    <div class="member-name">Bode Bosell</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/update1/eshaan.heic" alt="Volunter">
+                    </div>
+                    <div class="member-name">Eshaan Vakil</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+
+                <div class="team-member">
+                    <div class="headshot">
+                        <img src="Media/Headshots/update1/davis.png" alt="John">
+                    </div>
+                    <div class="member-name">John Davis</div>
+                    <div class="member-school">Strake Jesuit College Preparatory</div>
+                </div>
+
+                <div class="team-member">
+                    <div class="headshot"><img src="Media/Headshots/update1/isabela.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Isabela Charlton-Ouw</div>
+                    <div class="member-school">St. Agnes Academy</div>
+                </div>
+                <div class="team-member">
+                    <div class="headshot"><img src="Media/Headshots/update1/Karolina.png" alt="Volunter">
+                    </div>
+                    <div class="member-name">Karolina De La Cruz</div>
+                    <div class="member-school">St. Agnes Academy</div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <footer class="contact-footer">
+        <h3>Contact Info</h3>
+        <div class="contact-info">
+            <a href="mailto:keshav.harpavat@gmail.com">keshav.harpavat@gmail.com</a><br>
+            469-880-2538<br>
+            Houston, Texas, 77401<br>
+            Social Media: mathmadesimple___
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.team-member').forEach(member => {
+            member.style.animationPlayState = 'paused';
+            observer.observe(member);
+        });
+    </script>
+</body>
+</html>

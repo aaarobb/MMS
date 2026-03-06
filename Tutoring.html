@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoring — Math Made Simple</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --ink:        #0c0f1a;
+            --ink-light:  #1a2035;
+            --gold:       #c9a84c;
+            --gold-light: #e2c97e;
+            --sand:       #e8dcc8;
+            --sand-light: #f5f0e8;
+            --white:      #ffffff;
+            --muted:      #8a8f9e;
+            --text:       #1e293b;
+            --text-muted: #64748b;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--sand-light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ──────────────────────────────────── */
+        nav {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 1000;
+            padding: 1.5rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(12, 15, 26, 0.97);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(201,168,76,0.1);
+            animation: navDrop 0.9s ease-out both;
+        }
+
+        @keyframes navDrop {
+            from { transform: translateY(-100%); opacity: 0; }
+            to   { transform: translateY(0);     opacity: 1; }
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 2.8rem; list-style: none; }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover { color: var(--gold-light); }
+        .nav-links a:hover::after { width: 100%; }
+
+        @media (min-width: 769px) { .menu-toggle { display: none !important; } }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 24px; height: 2px;
+            background: var(--white);
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px,-6px); }
+
+        /* ── PAGE HEADER ──────────────────────────── */
+        .page-header {
+            background: var(--ink);
+            padding: 10rem 8% 5rem;
+            text-align: center;
+        }
+
+        .page-header .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out 0.3s forwards;
+        }
+
+        .page-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 300;
+            color: var(--white);
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 1s ease-out 0.5s forwards;
+        }
+
+        .page-header p {
+            font-size: 1.05rem;
+            color: rgba(232,220,200,0.65);
+            max-width: 640px;
+            margin: 0 auto;
+            font-weight: 300;
+            line-height: 1.9;
+            opacity: 0;
+            animation: fadeUp 0.9s ease-out 0.7s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── PLANS + IMAGE ────────────────────────── */
+        .tutoring-section {
+            padding: 6rem 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .plans-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            background: var(--white);
+            border-radius: 8px;
+            padding: 4rem;
+            box-shadow: 0 20px 60px rgba(12,15,26,0.08);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .plans-wrapper.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── PRICING TABLE ────────────────────────── */
+        .plans-container h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 2rem;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.8rem;
+        }
+
+        .pricing-table thead tr {
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .pricing-table th {
+            padding: 0.9rem 1rem;
+            text-align: left;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .pricing-table tbody tr {
+            border-bottom: 1px solid #e8e4dc;
+            transition: background 0.2s ease;
+        }
+
+        .pricing-table tbody tr:last-child { border-bottom: none; }
+        .pricing-table tbody tr:hover { background: var(--sand-light); }
+
+        .pricing-table td {
+            padding: 1.3rem 1rem;
+            font-size: 0.95rem;
+            color: var(--text);
+            vertical-align: top;
+        }
+
+        .pricing-table td:first-child {
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .pricing-table .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--gold);
+            white-space: nowrap;
+        }
+
+        .pricing-table .desc {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .fine-print {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-style: italic;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e8e4dc;
+        }
+
+        /* ── IMAGE ────────────────────────────────── */
+        .tutoring-image {
+            width: 100%;
+            height: 100%;
+            min-height: 480px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--ink-light);
+        }
+
+        .tutoring-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ── CTA ──────────────────────────────────── */
+        .cta-section {
+            text-align: center;
+            padding: 0 8% 6rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+        }
+
+        .cta-section.visible { opacity: 1; transform: translateY(0); }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.1rem 2.8rem;
+            background: var(--ink);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            border: 1px solid var(--ink);
+            transition: all 0.35s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--ink);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(201,168,76,0.3);
+        }
+
+        .cta-button svg {
+            width: 14px; height: 14px;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover svg { transform: translateX(4px); }
+
+        /* ── WHY US STRIP ─────────────────────────── */
+        .why-strip {
+            background: var(--ink-light);
+            padding: 5rem 8%;
+            border-top: 1px solid rgba(201,168,76,0.1);
+            border-bottom: 1px solid rgba(201,168,76,0.1);
+        }
+
+        .why-strip-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .why-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .why-item.visible { opacity: 1; transform: translateY(0); }
+        .why-item:nth-child(2) { transition-delay: 0.1s; }
+        .why-item:nth-child(3) { transition-delay: 0.2s; }
+
+        .why-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--gold-light);
+            line-height: 1;
+            margin-bottom: 0.6rem;
+        }
+
+        .why-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.8rem;
+        }
+
+        .why-desc {
+            font-size: 0.92rem;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.8;
+        }
+
+        /* ── TESTIMONIALS ─────────────────────────── */
+        .testimonials {
+            background: var(--sand-light);
+            padding: 6rem 8%;
+        }
+
+        .testimonials-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 3.5vw, 3rem);
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .testimonials h2.visible { opacity: 1; transform: translateY(0); }
+
+        .stars-row {
+            font-size: 1.2rem;
+            margin-bottom: 3.5rem;
+            opacity: 0;
+            transition: opacity 0.8s ease 0.15s;
+        }
+
+        .stars-row.visible { opacity: 1; }
+
+        /* swipeable track */
+        .testimonials-wrapper { overflow: hidden; }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: grab;
+            user-select: none;
+        }
+
+        .testimonial-track:active { cursor: grabbing; }
+        .testimonial-track.no-transition { transition: none; }
+
+        .swipeable-card {
+            flex: 0 0 calc(33.333% - 1.4rem);
+            margin: 0 0.7rem;
+            background: var(--white);
+            border: 1px solid #e2d9c8;
+            border-radius: 4px;
+            padding: 2.5rem 2rem;
+            text-align: left;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .swipeable-card.visible { opacity: 1; transform: translateY(0); }
+        .swipeable-card:nth-child(2) { transition-delay: 0.1s; }
+        .swipeable-card:nth-child(3) { transition-delay: 0.2s; }
+
+        .swipeable-card:hover {
+            box-shadow: 0 12px 40px rgba(12,15,26,0.08);
+            border-color: var(--gold);
+        }
+
+        .testimonial-header {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-stars { color: #f59e0b; font-size: 0.95rem; }
+
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 2.5rem;
+        }
+
+        .tdot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: rgba(12,15,26,0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tdot.active {
+            width: 28px;
+            border-radius: 4px;
+            background: var(--gold);
+        }
+
+        /* ── FOOTER ───────────────────────────────── */
+        .contact-footer {
+            background: var(--ink);
+            padding: 4rem 8%;
+            text-align: center;
+            border-top: 1px solid rgba(201,168,76,0.12);
+        }
+
+        .contact-footer .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-footer h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-info {
+            font-size: 0.92rem;
+            color: var(--muted);
+            line-height: 2.2;
+        }
+
+        /* ── RESPONSIVE ───────────────────────────── */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 5%; }
+            .menu-toggle { display: flex; }
+
+            .nav-links {
+                position: fixed;
+                top: 0; right: -100%;
+                height: 100vh; width: 70%; max-width: 300px;
+                background: var(--ink);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                gap: 2rem;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.5);
+            }
+
+            .nav-links.active { right: 0; }
+
+            .page-header { padding: 8rem 6% 4rem; }
+            .tutoring-section { padding: 4rem 6%; }
+
+            .plans-wrapper {
+                grid-template-columns: 1fr;
+                padding: 2.5rem 2rem;
+                gap: 2.5rem;
+            }
+
+            .tutoring-image { min-height: 280px; }
+
+            .why-strip-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .why-strip { padding: 4rem 6%; }
+            .testimonials { padding: 4rem 6%; }
+            .swipeable-card { flex: 0 0 calc(85% - 1.4rem); }
+
+            .cta-section { padding: 0 6% 4rem; }
+
+            .pricing-table th,
+            .pricing-table td { padding: 1rem 0.6rem; font-size: 0.85rem; }
+            .pricing-table .price { font-size: 1.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .plans-wrapper { padding: 2rem 1.5rem; }
+            .plans-container h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── NAV ──────────────────────────────────── -->
+    <nav>
+        <a href="index.html" class="logo">Math Made <span>Simple</span></a>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="refugee.html">International Work</a></li>
+            <li><a href="Tutoring.html">Tutoring</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- ── PAGE HEADER ──────────────────────────── -->
+    <div class="page-header">
+        <p class="eyebrow">One-on-One · Houston, TX</p>
+        <h1>Tutoring</h1>
+        <p>We guarantee one-on-one sessions with top instructors to ensure your child thrives — whether reviewing for a tough test or getting ahead in class.</p>
+    </div>
+
+    <!-- ── PLANS + IMAGE ──────────────────────────── -->
+    <section class="tutoring-section">
+        <div class="plans-wrapper" id="plansWrapper">
+            <div class="plans-container">
+                <h2>Tutoring Plans</h2>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Plan</th>
+                            <th>Time</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Quick Solve</td>
+                            <td>30 min</td>
+                            <td><span class="price">$17.50</span></td>
+                            <td><span class="desc">Great for homework help or quick reviews</span></td>
+                        </tr>
+                        <tr>
+                            <td>Standard</td>
+                            <td>1 hour</td>
+                            <td><span class="price">$35</span></td>
+                            <td><span class="desc">Ideal for mastering concepts and building skills</span></td>
+                        </tr>
+                        <tr>
+                            <td>Deep Dive</td>
+                            <td>2 hours</td>
+                            <td><span class="price">$70</span></td>
+                            <td><span class="desc">In-depth prep for tests or major challenges</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="fine-print">$15 cancellation fee applies. 80% of fees go directly to tutors; 20% supports outreach and education equality initiatives.</p>
+            </div>
+
+            <div class="tutoring-image">
+                <img src="Media/Tutoring/Tutoring.heic" alt="Tutoring session">
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CTA ────────────────────────────────────── -->
+    <div class="cta-section" id="ctaSection">
+        <a href="https://docs.google.com/forms/u/1/d/e/1FAIpQLSfOElzxXwf7SMKjFlvkxkfVM_V6Q8l2TS60kxFbNHYxJLv96Q/viewform?usp=send_form" target="_blank" class="cta-button">
+            Fill Out Google Form to Get Started
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 7h12M8 2l5 5-5 5"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- ── WHY US ──────────────────────────────────── -->
+    <div class="why-strip">
+        <div class="why-strip-inner">
+            <div class="why-item" id="why1">
+                <div class="why-num">1-on-1</div>
+                <div class="why-label">Personalized Sessions</div>
+                <div class="why-desc">Every session is tailored to your child's exact level, pace, and learning style — no generic curriculum.</div>
+            </div>
+            <div class="why-item" id="why2">
+                <div class="why-num">300+</div>
+                <div class="why-label">Students Helped</div>
+                <div class="why-desc">A proven track record across Houston-area schools from elementary through high school math.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── TESTIMONIALS ───────────────────────────── -->
+    <section class="testimonials">
+        <div class="testimonials-inner">
+            <h2 id="tTitle">What Parents Are Saying</h2>
+            <div class="stars-row" id="tStars">⭐⭐⭐⭐⭐</div>
+            <div class="testimonials-wrapper">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="swipeable-card">
+                        <div class="testimonial-header">Middle School Parent, Bellaire</div>
+                        <div class="testimonial-text">"My son said he learned a lot. It was nice he took his shoes off. Very polite."</div>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                    <div class="swipeable-card">
+                        <div class="testimonial-header">Lower School Parent, West U</div>
+                        <div class="testimonial-text">"He got along well with the children and kept them engaged, which is sometimes a challenge!"</div>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                    <div class="swipeable-card">
+                        <div class="testimonial-header">Middle School Parent, Sugar Land</div>
+                        <div class="testimonial-text">"Prepared for the session. Eased in well with the kid. Connected well. Calm and Composed. Patient."</div>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testimonial-dots" id="testimonialDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ─────────────────────────────────── -->
+    <footer class="contact-footer">
+        <p class="eyebrow">Get in Touch</p>
+        <h3>Contact Info</h3>
+        <div class="contact-info">
+            keshav.harpavat [at] gmail [dot] com<br>
+            469-880-2538<br>
+            Houston, Texas, 77401<br>
+            Social Media: mathmadesimple___
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks   = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        ['plansWrapper', 'ctaSection', 'why1', 'why2'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
+
+        // Testimonials reveal
+        const tObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                document.getElementById('tTitle').classList.add('visible');
+                document.getElementById('tStars').classList.add('visible');
+                document.querySelectorAll('.swipeable-card').forEach(c => c.classList.add('visible'));
+                tObserver.disconnect();
+            }
+        }, { threshold: 0.15 });
+        tObserver.observe(document.querySelector('.testimonials'));
+
+        // Swipeable testimonials
+        const track   = document.getElementById('testimonialTrack');
+        const cards   = document.querySelectorAll('.swipeable-card');
+        const dotsWrap = document.getElementById('testimonialDots');
+        let currentIndex = 0, startX = 0, currentTranslate = 0, previousTranslate = 0, isDragging = false;
+
+        function getCardsPerView() {
+            return window.innerWidth <= 768 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
+        }
+
+        let cardsPerView = getCardsPerView();
+        const maxIndex = Math.max(0, cards.length - cardsPerView);
+
+        for (let i = 0; i <= maxIndex; i++) {
+            const d = document.createElement('div');
+            d.classList.add('tdot');
+            if (i === 0) d.classList.add('active');
+            d.addEventListener('click', () => goTo(i));
+            dotsWrap.appendChild(d);
+        }
+
+        const dots = dotsWrap.querySelectorAll('.tdot');
+
+        function updateDots() {
+            dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+        }
+
+        function getCardWidth() {
+            return cards[0].offsetWidth + 14;
+        }
+
+        function goTo(index) {
+            currentIndex = Math.max(0, Math.min(index, maxIndex));
+            currentTranslate = currentIndex * -getCardWidth();
+            previousTranslate = currentTranslate;
+            track.style.transform = `translateX(${currentTranslate}px)`;
+            updateDots();
+        }
+
+        track.addEventListener('mousedown',  e => { isDragging = true; startX = e.pageX; track.classList.add('no-transition'); });
+        track.addEventListener('mousemove',  e => { if (!isDragging) return; currentTranslate = previousTranslate + (e.pageX - startX); track.style.transform = `translateX(${currentTranslate}px)`; });
+        track.addEventListener('mouseup',    () => endDrag());
+        track.addEventListener('mouseleave', () => endDrag());
+        track.addEventListener('touchstart', e => { isDragging = true; startX = e.touches[0].clientX; track.classList.add('no-transition'); });
+        track.addEventListener('touchmove',  e => { if (!isDragging) return; currentTranslate = previousTranslate + (e.touches[0].clientX - startX); track.style.transform = `translateX(${currentTranslate}px)`; });
+        track.addEventListener('touchend',   () => endDrag());
+
+        function endDrag() {
+            if (!isDragging) return;
+            isDragging = false;
+            track.classList.remove('no-transition');
+            const moved = currentTranslate - previousTranslate;
+            if (Math.abs(moved) > getCardWidth() / 6) {
+                if (moved < 0 && currentIndex < maxIndex) currentIndex++;
+                else if (moved > 0 && currentIndex > 0) currentIndex--;
+            }
+            goTo(currentIndex);
+        }
+
+        window.addEventListener('resize', () => goTo(Math.min(currentIndex, Math.max(0, cards.length - getCardsPerView()))));
+    </script>
+</body>
+</html>

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Work — Math Made Simple</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --ink:        #0c0f1a;
+            --ink-light:  #1a2035;
+            --gold:       #c9a84c;
+            --gold-light: #e2c97e;
+            --sand:       #e8dcc8;
+            --sand-light: #f5f0e8;
+            --white:      #ffffff;
+            --muted:      #8a8f9e;
+            --text:       #1e293b;
+            --text-muted: #64748b;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--sand-light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ──────────────────────────────────── */
+        nav {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 1000;
+            padding: 1.5rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(12, 15, 26, 0.97);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(201,168,76,0.1);
+            animation: navDrop 0.9s ease-out both;
+        }
+
+        @keyframes navDrop {
+            from { transform: translateY(-100%); opacity: 0; }
+            to   { transform: translateY(0);     opacity: 1; }
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 2.8rem; list-style: none; }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover { color: var(--gold-light); }
+        .nav-links a:hover::after { width: 100%; }
+
+        @media (min-width: 769px) { .menu-toggle { display: none !important; } }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 24px; height: 2px;
+            background: var(--white);
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px,-6px); }
+
+        /* ── PAGE HEADER ──────────────────────────── */
+        .page-header {
+            background: var(--ink);
+            padding: 10rem 8% 5rem;
+            text-align: center;
+        }
+
+        .page-header .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out 0.3s forwards;
+        }
+
+        .page-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 300;
+            color: var(--white);
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 1s ease-out 0.5s forwards;
+        }
+
+        .page-header p {
+            font-size: 1.05rem;
+            color: rgba(232,220,200,0.65);
+            max-width: 620px;
+            margin: 0 auto;
+            font-weight: 300;
+            line-height: 1.9;
+            opacity: 0;
+            animation: fadeUp 0.9s ease-out 0.7s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── PROGRAM NAV TABS ─────────────────────── */
+        .program-tabs {
+            background: var(--ink-light);
+            padding: 2.5rem 8%;
+            display: flex;
+            gap: 1.5rem;
+            position: sticky;
+            top: 72px;
+            z-index: 100;
+            border-bottom: 1px solid rgba(201,168,76,0.12);
+        }
+
+        .ptab {
+            flex: 1;
+            padding: 1.8rem 2rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .ptab:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(201,168,76,0.4);
+        }
+
+        .ptab.active {
+            background: rgba(201,168,76,0.1);
+            border-color: var(--gold);
+        }
+
+        .ptab-location {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            transition: color 0.3s;
+        }
+
+        .ptab-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.2;
+            transition: color 0.3s;
+        }
+
+        .ptab.active .ptab-title,
+        .ptab:hover .ptab-title {
+            color: var(--white);
+        }
+
+        .ptab-desc {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.3);
+            font-weight: 400;
+            line-height: 1.5;
+            transition: color 0.3s;
+        }
+
+        .ptab.active .ptab-desc,
+        .ptab:hover .ptab-desc {
+            color: rgba(255,255,255,0.55);
+        }
+
+        /* ── PROGRAM SECTIONS ─────────────────────── */
+        .program { display: none; }
+        .program.active { display: block; }
+
+        /* ── SOUTH AFRICA ─────────────────────────── */
+        .sa-hero {
+            position: relative;
+            height: 200vh;
+            min-height: 380px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a2a1a, #0c1a0c);
+        }
+
+        .sa-hero img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            display: block;
+        }
+
+        .sa-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(12,15,26,0.9) 0%, rgba(12,15,26,0.2) 60%, transparent 100%);
+        }
+
+        .sa-hero-text {
+            position: absolute;
+            bottom: 3rem;
+            left: 8%;
+        }
+
+        .sa-hero-text .eyebrow {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .sa-hero-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            color: var(--white);
+            line-height: 1.1;
+        }
+
+        /* ── CONTENT BLOCK ────────────────────────── */
+        .content-block {
+            padding: 5rem 8%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .prog-body p {
+            font-size: 1.02rem;
+            line-height: 1.95;
+            color: var(--text-muted);
+            margin-bottom: 1.4rem;
+        }
+
+        .prog-body p:last-child { margin-bottom: 0; }
+
+        .prog-body a {
+            color: var(--ink);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(12,15,26,0.25);
+            transition: border-color 0.3s, color 0.3s;
+        }
+
+        .prog-body a:hover { color: var(--gold); border-color: var(--gold); }
+
+        /* callout box */
+        .callout {
+            background: var(--ink);
+            border-radius: 4px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .callout .callout-tag {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .callout p {
+            font-size: 0.95rem;
+            color: rgba(232,220,200,0.7);
+            line-height: 1.85;
+            margin: 0;
+        }
+
+        /* image stack */
+        .img-stack {
+            position: relative;
+        }
+
+        .img-stack .img-main {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+            background: var(--ink-light);
+        }
+
+        /* single image placeholder */
+        .img-placeholder {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, #1a3a1a, #0c2a0c);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-placeholder span {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* stats row */
+        .prog-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1px;
+            background: #e2d9c8;
+            border: 1px solid #e2d9c8;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+        }
+
+        .prog-stat {
+            background: var(--white);
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+        }
+
+        .prog-stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: var(--ink);
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .prog-stat-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* ── DONATE SECTION ───────────────────────── */
+        .donate-section {
+            background: var(--ink);
+            padding: 5rem 8%;
+            text-align: center;
+        }
+
+        .donate-section .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .donate-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .donate-section p {
+            font-size: 1rem;
+            color: rgba(232,220,200,0.6);
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.9;
+        }
+
+        .donate-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.1rem 2.8rem;
+            background: var(--gold);
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: all 0.35s ease;
+        }
+
+        .donate-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(201,168,76,0.35);
+        }
+
+        .donate-btn svg {
+            width: 14px; height: 14px;
+            transition: transform 0.3s;
+        }
+
+        .donate-btn:hover svg { transform: translateX(4px); }
+
+        /* ── COLLABORATE ──────────────────────────── */
+        .collaborate {
+            background: var(--sand-light);
+            padding: 5rem 8%;
+            text-align: center;
+            border-top: 1px solid #e2d9c8;
+        }
+
+        .collaborate .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .collaborate h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 0.8rem;
+        }
+
+        .collaborate p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-chips {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .chip {
+            font-size: 0.82rem;
+            color: var(--ink);
+            border: 1px solid #c8bfae;
+            border-radius: 2px;
+            padding: 0.6rem 1.3rem;
+            background: var(--white);
+        }
+
+        /* ── FOOTER ───────────────────────────────── */
+        .contact-footer {
+            background: var(--ink);
+            padding: 4rem 8%;
+            text-align: center;
+            border-top: 1px solid rgba(201,168,76,0.12);
+        }
+
+        .contact-footer .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-footer h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-info {
+            font-size: 0.92rem;
+            color: var(--muted);
+            line-height: 2.2;
+        }
+
+        /* ── REVEAL ───────────────────────────────── */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal-item.visible { opacity: 1; transform: translateY(0); }
+        .reveal-item:nth-child(2) { transition-delay: 0.1s; }
+        .reveal-item:nth-child(3) { transition-delay: 0.2s; }
+
+        /* ── RESPONSIVE ───────────────────────────── */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 5%; }
+            .menu-toggle { display: flex; }
+
+            .nav-links {
+                position: fixed;
+                top: 0; right: -100%;
+                height: 100vh; width: 70%; max-width: 300px;
+                background: var(--ink);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                gap: 2rem;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.5);
+            }
+
+            .nav-links.active { right: 0; }
+
+            .page-header { padding: 8rem 6% 4rem; }
+            .program-tabs { padding: 1.5rem 5%; flex-direction: column; gap: 0.8rem; position: static; }
+            .ptab { padding: 1.4rem 1.5rem; }
+
+            .two-col { grid-template-columns: 1fr; gap: 3rem; }
+            .img-stack { order: -1; }
+            .img-placeholder { aspect-ratio: 3/2; }
+            .img-stack .img-main { aspect-ratio: 3/2; }
+
+            .content-block { padding: 3.5rem 6%; }
+            .prog-stats { grid-template-columns: repeat(3, 1fr); }
+            .donate-section { padding: 4rem 6%; }
+            .collaborate { padding: 4rem 6%; }
+        }
+
+        @media (max-width: 480px) {
+            .prog-stats { grid-template-columns: 1fr; }
+            .prog-stat:not(:last-child) { border-bottom: 1px solid #e2d9c8; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── NAV ──────────────────────────────────── -->
+    <nav>
+        <a href="index.html" class="logo">Math Made <span>Simple</span></a>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="refugee.html">International Work</a></li>
+            <li><a href="Tutoring.html">Tutoring</a></li>
+            <li><a href="About.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- ── PAGE HEADER ──────────────────────────── -->
+    <div class="page-header">
+        <p class="eyebrow">Global Impact</p>
+        <h1>International Work</h1>
+        <p>From South Africa to India, we bring math education and community support to students around the world.</p>
+    </div>
+
+    <!-- ── PROGRAM TABS ───────────────────────────── -->
+    <div class="program-tabs">
+        <button class="ptab active" data-program="southafrica">
+            <span class="ptab-location">Makhanda · South Africa</span>
+            <span class="ptab-title">South Africa Partnership</span>
+            <span class="ptab-desc">Weekly virtual tutoring + March 2025 in-person trip</span>
+        </button>
+        <button class="ptab" data-program="india">
+            <span class="ptab-location">Rural India · Pratham USA</span>
+            <span class="ptab-title">Fundraiser for Education Equality</span>
+            <span class="ptab-desc">$3,000+ raised for children in underprivileged villages</span>
+        </button>
+    </div>
+
+    <!-- ══ SOUTH AFRICA ════════════════════════════ -->
+    <div class="program active" id="southafrica">
+
+        <!-- hero image -->
+        <div class="sa-hero">
+            <img src="Media/CBO/SouthA/2.heic" alt="Makhanda, South Africa">
+            <div class="sa-hero-overlay"></div>
+            <div class="sa-hero-text">
+                <p class="eyebrow">Makhanda · South Africa</p>
+                <h2>South Africa<br>Partnership</h2>
+            </div>
+        </div>
+
+        <div class="content-block">
+
+          
+
+            <div class="two-col">
+                <div class="prog-body">
+                    <p class="reveal-item">In partnership with <a href="https://www.awarenet.org" target="_blank" rel="noopener noreferrer">Awarenet</a>, we virtually tutor children in the township of Makhanda, South Africa every Monday morning. Makhanda is among the areas with the lowest levels of math proficiency in the world — a gap we are determined to help close.</p>
+                    <p class="reveal-item">Over time, we have built strong, lasting relationships with our students while watching them gradually improve their skills. We are currently preparing them for the <strong>South African Math Olympiad</strong>.</p>
+
+                    <div class="callout reveal-item">
+                        <div class="callout-tag">March 2025 · Travel Program</div>
+                        <p>Our team is currently traveling in Makhanda this March. In partnership with Awarenet, Rhodes University, and local churches, we will continue our in-person math programs, participate in community service, and create a short documentary on the anti-apartheid movement. The documentary will explore the history of colonialism, the resistance movements of the Xhosa people, and the forces that shaped the broader anti-apartheid struggle.</p>
+                    </div>
+                </div>
+
+                <div class="img-stack reveal-item">
+                    <img src="Media/CBO/SouthA/3.heic" alt="South Africa program" class="img-main">
+                </div>
+            </div>
+        </div>
+
+        <!-- partner callout -->
+        <div class="donate-section">
+            <p class="eyebrow">Our Partner</p>
+            <h3>Awarenet</h3>
+            <p>Awarenet works to empower communities in the Eastern Cape through education, skills development, and technology access.</p>
+            <a href="https://www.awarenet.org" target="_blank" rel="noopener noreferrer" class="donate-btn">
+                Visit Awarenet
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M1 7h12M8 2l5 5-5 5"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- ══ INDIA / FUNDRAISER ══════════════════════ -->
+    <div class="program" id="india">
+
+        <!-- hero -->
+        <div class="sa-hero" style="background: linear-gradient(135deg, #2a1a0c, #1a0c0a);">
+            <img src="Media/CBO/FEE/1.png" alt="Fundraiser for Education Equality">
+            <div class="sa-hero-overlay"></div>
+            <div class="sa-hero-text">
+                <p class="eyebrow">India · Pratham USA</p>
+                <h2>Fundraiser for<br>Education Equality</h2>
+            </div>
+        </div>
+
+        <div class="content-block">
+
+            <!-- stats -->
+            <div class="prog-stats reveal-item">
+                <div class="prog-stat">
+                    <div class="prog-stat-num">$3k+</div>
+                    <div class="prog-stat-label">Raised So Far</div>
+                </div>
+                <div class="prog-stat">
+                    <div class="prog-stat-num">Rural</div>
+                    <div class="prog-stat-label">India Focus</div>
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div class="prog-body">
+                    <p class="reveal-item">In partnership with <a href="https://prathamusa.org" target="_blank" rel="noopener noreferrer">Pratham USA</a>, we are raising funds to expand access to quality education for children in rural India.</p>
+                    <p class="reveal-item">Pratham is one of the largest and most respected education nonprofits in India, reaching millions of children each year with proven, low-cost learning programs. We support their mission by fundraising directly through our dedicated campaign link — every dollar goes straight to them.</p>
+                    <p class="reveal-item">We have currently raised upwards of <strong>$3,000</strong> and are continuing to grow that number.</p>
+                </div>
+
+                <div class="img-stack reveal-item">
+                    <img src="Media/CBO/FEE/1.png" alt="Fundraiser for Education Equality" class="img-main">
+                </div>
+            </div>
+        </div>
+
+        <!-- donate CTA -->
+        <div class="donate-section">
+            <p class="eyebrow">Support the Cause</p>
+            <h3>Donate via Our Link</h3>
+            <p>Every contribution goes directly to Pratham USA's programs for children in underprivileged villages across India.</p>
+            <a href="https://give.prathamusa.org/campaign/731568/donate?utm_source=math-made-simple&utm_medium=partners&utm_campaign=diwali-2025" target="_blank" rel="noopener noreferrer" class="donate-btn">
+                Donate Now
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M1 7h12M8 2l5 5-5 5"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- ── COLLABORATE ────────────────────────────── -->
+    <div class="collaborate">
+        <p class="eyebrow">Get Involved</p>
+        <h3>Collaborate with Us</h3>
+        <p>Interested in volunteering, sponsoring initiatives, or learning more? We'd love to hear from you.</p>
+        <div class="contact-chips">
+            <div class="chip">keshav.harpavat [at] gmail [dot] com</div>
+            <div class="chip">469-880-2538</div>
+            <div class="chip">mathmadesimple___</div>
+        </div>
+    </div>
+
+    <!-- ── FOOTER ─────────────────────────────────── -->
+    <footer class="contact-footer">
+        <p class="eyebrow">Get in Touch</p>
+        <h3>Contact Info</h3>
+        <div class="contact-info">
+            keshav.harpavat [at] gmail [dot] com<br>
+            469-880-2538<br>
+            Houston, Texas, 77401<br>
+            Social Media: mathmadesimple___
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks   = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Tab switching
+        const tabs     = document.querySelectorAll('.ptab');
+        const programs = document.querySelectorAll('.program');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                programs.forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.program).classList.add('active');
+                // re-trigger reveals for newly shown section
+                triggerReveals();
+            });
+        });
+
+        // Scroll reveal
+        function triggerReveals() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('visible');
+                        observer.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.program.active .reveal-item:not(.visible)').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        triggerReveals();
+    </script>
+</body>
+</html>

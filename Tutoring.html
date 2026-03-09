@@ -13,8 +13,8 @@
         :root {
             --ink:        #0c0f1a;
             --ink-light:  #1a2035;
-            --gold:       #c9a84c;
-            --gold-light: #e2c97e;
+            --coral:      #e8684a;
+            --coral-light: #f4a48e;
             --sand:       #e8dcc8;
             --sand-light: #f5f0e8;
             --white:      #ffffff;
@@ -44,7 +44,7 @@
             align-items: center;
             background: rgba(12, 15, 26, 0.97);
             backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(201,168,76,0.1);
+            border-bottom: 1px solid rgba(232,104,74,0.15);
             animation: navDrop 0.9s ease-out both;
         }
 
@@ -62,7 +62,7 @@
             letter-spacing: 0.5px;
         }
 
-        .logo span { color: var(--gold); }
+        .logo span { color: var(--coral-light); }
 
         .nav-links { display: flex; gap: 2.8rem; list-style: none; }
 
@@ -82,11 +82,11 @@
             position: absolute;
             bottom: -3px; left: 0;
             width: 0; height: 1px;
-            background: var(--gold);
+            background: var(--coral);
             transition: width 0.4s ease;
         }
 
-        .nav-links a:hover { color: var(--gold-light); }
+        .nav-links a:hover { color: var(--coral-light); }
         .nav-links a:hover::after { width: 100%; }
 
         @media (min-width: 769px) { .menu-toggle { display: none !important; } }
@@ -122,7 +122,7 @@
             font-weight: 600;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral-light);
             margin-bottom: 1.2rem;
             opacity: 0;
             animation: fadeUp 0.8s ease-out 0.3s forwards;
@@ -231,7 +231,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.4rem;
             font-weight: 400;
-            color: var(--gold);
+            color: var(--coral);
             white-space: nowrap;
         }
 
@@ -296,11 +296,11 @@
         }
 
         .cta-button:hover {
-            background: var(--gold);
-            border-color: var(--gold);
-            color: var(--ink);
+            background: var(--coral);
+            border-color: var(--coral);
+            color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(201,168,76,0.3);
+            box-shadow: 0 8px 28px rgba(232,104,74,0.3);
         }
 
         .cta-button svg {
@@ -314,8 +314,8 @@
         .why-strip {
             background: var(--ink-light);
             padding: 5rem 8%;
-            border-top: 1px solid rgba(201,168,76,0.1);
-            border-bottom: 1px solid rgba(201,168,76,0.1);
+            border-top: 1px solid rgba(232,104,74,0.12);
+            border-bottom: 1px solid rgba(232,104,74,0.12);
         }
 
         .why-strip-inner {
@@ -341,7 +341,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.8rem;
             font-weight: 300;
-            color: var(--gold-light);
+            color: var(--coral-light);
             line-height: 1;
             margin-bottom: 0.6rem;
         }
@@ -427,7 +427,7 @@
 
         .swipeable-card:hover {
             box-shadow: 0 12px 40px rgba(12,15,26,0.08);
-            border-color: var(--gold);
+            border-color: var(--coral-light);
         }
 
         .testimonial-header {
@@ -435,7 +435,7 @@
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral);
             margin-bottom: 1rem;
         }
 
@@ -468,7 +468,7 @@
         .tdot.active {
             width: 28px;
             border-radius: 4px;
-            background: var(--gold);
+            background: var(--coral);
         }
 
         /* ── FOOTER ───────────────────────────────── */
@@ -476,7 +476,7 @@
             background: var(--ink);
             padding: 4rem 8%;
             text-align: center;
-            border-top: 1px solid rgba(201,168,76,0.12);
+            border-top: 1px solid rgba(232,104,74,0.2);
         }
 
         .contact-footer .eyebrow {
@@ -484,7 +484,7 @@
             font-weight: 600;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral-light);
             margin-bottom: 0.8rem;
         }
 
@@ -562,6 +562,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="refugee.html">International Work</a></li>
             <li><a href="Tutoring.html">Tutoring</a></li>
+            <li><a href="News.html">News</a></li>
             <li><a href="About.html">About Us</a></li>
         </ul>
     </nav>
@@ -612,7 +613,7 @@
             </div>
 
             <div class="tutoring-image">
-                <img src="Media/Tutoring/Tutoring.heic" alt="Tutoring session">
+                <img src="Media/Tutoring/Tutoring.png" alt="Tutoring session">
             </div>
         </div>
     </section>

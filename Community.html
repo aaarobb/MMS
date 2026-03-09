@@ -1,9 +1,12 @@
+<!--all convered to png, need to upload -->
+<!--remove accents, -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afghan Refugee Tutoring — Math Made Simple</title>
+    <title>Refugee Youth Tutoring — Math Made Simple</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -15,8 +18,8 @@
             --ink-light:  #1a2035;
             --sand:       #e8dcc8;
             --sand-light: #f5f0e8;
-            --gold:       #c9a84c;
-            --gold-light: #e2c97e;
+            --coral:      #e8684a;
+            --coral-light: #f4a48e;
             --muted:      #8a8f9e;
             --white:      #ffffff;
         }
@@ -47,7 +50,7 @@
         nav.scrolled {
             background: rgba(12, 15, 26, 0.97);
             backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(201,168,76,0.1);
+            border-bottom: 1px solid rgba(232,104,74,0.15);
         }
 
         @keyframes navDrop {
@@ -64,7 +67,7 @@
             letter-spacing: 0.5px;
         }
 
-        .logo span { color: var(--gold); }
+        .logo span { color: var(--coral-light); }
 
         .nav-links { display: flex; gap: 2.8rem; list-style: none; }
 
@@ -84,11 +87,11 @@
             position: absolute;
             bottom: -3px; left: 0;
             width: 0; height: 1px;
-            background: var(--gold);
+            background: var(--coral);
             transition: width 0.4s ease;
         }
 
-        .nav-links a:hover { color: var(--gold-light); }
+        .nav-links a:hover { color: var(--coral-light); }
         .nav-links a:hover::after { width: 100%; }
 
         @media (min-width: 769px) { .menu-toggle { display: none !important; } }
@@ -168,15 +171,7 @@
 
         .hero-kicker-line {
             width: 32px; height: 1px;
-            background: var(--gold);
-        }
-
-        .hero-kicker span {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--gold);
+            background: var(--coral);
         }
 
         .hero h1 {
@@ -192,7 +187,7 @@
 
         .hero h1 em {
             font-style: italic;
-            color: var(--gold-light);
+            color: #fff;
             display: block;
         }
 
@@ -226,9 +221,9 @@
             padding: 0.45rem 1rem;
         }
 
-        .badge.gold {
-            border-color: rgba(201,168,76,0.5);
-            color: var(--gold-light);
+        .badge.coral {
+            border-color: rgba(232,104,74,0.5);
+            color: var(--coral-light);
         }
 
         @keyframes fadeUp {
@@ -261,7 +256,7 @@
         .scroll-line {
             width: 1px;
             height: 50px;
-            background: linear-gradient(to bottom, var(--gold), transparent);
+            background: linear-gradient(to bottom, var(--coral), transparent);
             animation: scrollPulse 2s ease-in-out infinite 1.8s;
         }
 
@@ -270,30 +265,11 @@
             50%       { opacity: 1; }
         }
 
-        /* ── MISSION STRIP ───────────────────────── */
-        .mission-strip {
-            background: var(--gold);
-            padding: 1.4rem 8%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .mission-strip p {
-            font-size: 0.82rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--ink);
-            text-align: center;
-        }
-
         /* ── STATS ───────────────────────────────── */
         .stats {
             background: var(--ink-light);
             padding: 5rem 8%;
-            border-bottom: 1px solid rgba(201,168,76,0.12);
+            border-bottom: 1px solid rgba(232,104,74,0.15);
         }
 
         .stats-grid {
@@ -330,7 +306,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 3.5rem;
             font-weight: 300;
-            color: var(--gold-light);
+            color: #fff;
             line-height: 1;
             margin-bottom: 0.5rem;
         }
@@ -363,7 +339,7 @@
             font-weight: 600;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral);
             margin-bottom: 1.2rem;
             opacity: 0;
             transform: translateY(15px);
@@ -434,7 +410,7 @@
             top: 2rem;
             right: -1.5rem;
             background: var(--ink);
-            color: var(--gold-light);
+            color: var(--coral-light);
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.1rem;
             font-style: italic;
@@ -442,7 +418,7 @@
             padding: 1.2rem 1.5rem;
             max-width: 200px;
             line-height: 1.6;
-            border-left: 2px solid var(--gold);
+            border-left: 2px solid var(--coral);
         }
 
         /* ── WHAT WE DO ──────────────────────────── */
@@ -470,7 +446,7 @@
             font-weight: 600;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral-light);
             margin-bottom: 1rem;
         }
 
@@ -493,7 +469,6 @@
         .pillar {
             background: var(--ink);
             padding: 3rem 2.5rem;
-            transition: background 0.4s ease;
             opacity: 0;
             transform: translateY(25px);
             transition: opacity 0.7s ease, transform 0.7s ease, background 0.4s ease;
@@ -509,7 +484,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 3rem;
             font-weight: 300;
-            color: rgba(201,168,76,0.2);
+            color: rgba(232,104,74,0.2);
             line-height: 1;
             margin-bottom: 1.5rem;
         }
@@ -549,7 +524,7 @@
             font-weight: 600;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral-light);
             margin-bottom: 1rem;
         }
 
@@ -601,7 +576,7 @@
             font-weight: 600;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral);
             margin-bottom: 1rem;
             opacity: 0;
             transform: translateY(15px);
@@ -664,7 +639,7 @@
             font-weight: 600;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral);
             margin-bottom: 0.8rem;
         }
 
@@ -695,14 +670,14 @@
             transition: border-color 0.3s, color 0.3s;
         }
 
-        .partner-link:hover { color: var(--gold); border-color: var(--gold); }
+        .partner-link:hover { color: var(--coral); border-color: var(--coral); }
 
         /* ── CONTACT ─────────────────────────────── */
         .contact {
             background: var(--ink);
             padding: 6rem 8%;
             text-align: center;
-            border-top: 1px solid rgba(201,168,76,0.12);
+            border-top: 1px solid rgba(232,104,74,0.2);
         }
 
         .contact .eyebrow {
@@ -710,7 +685,7 @@
             font-weight: 600;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral-light);
             margin-bottom: 1rem;
         }
 
@@ -729,7 +704,7 @@
         }
 
         .contact a { color: var(--muted); text-decoration: none; transition: color 0.3s; }
-        .contact a:hover { color: var(--gold-light); }
+        .contact a:hover { color: var(--coral-light); }
 
         /* ── LIGHTBOX ────────────────────────────── */
         .lightbox {
@@ -762,7 +737,7 @@
             transition: color 0.3s;
         }
 
-        .lightbox-close:hover { color: var(--gold-light); }
+        .lightbox-close:hover { color: var(--coral-light); }
 
         /* ── RESPONSIVE ──────────────────────────── */
         @media (max-width: 768px) {
@@ -831,20 +806,18 @@
     <!-- ── HERO ─────────────────────────────────── -->
     <section class="hero">
         <div class="hero-bg">
-            <!-- swap src for your best Vanguard photo, e.g. Media/CBO/Vanguard/5.JPG -->
-            <img src="Media/CBO/Vanguard/12.HEIC" alt="Afghan refugee tutoring session">
+            <img src="Media/CBO/Vanguard/12.png" alt="refugee tutoring session">
         </div>
         <div class="hero-gradient"></div>
         <div class="hero-content">
             <div class="hero-kicker">
                 <div class="hero-kicker-line"></div>
             </div>
-            <h1>Afghan Refugee<br><em>Tutoring Program</em></h1>
-            <p class="hero-desc">Every month, we gather with refugee youth from the Greater Houston Area for 60–90 minutes of math, laughter, and shared hope — no grades, no pressure, just connection.</p>
+            <h1>Refugee Youth<br><em>Tutoring Program</em></h1>
+            <p class="hero-desc">We gather with at-risk refugee youth from the Greater Houston Area for 60–90 minutes of math, bonding, and community on a monthly basis to forge long-lasting connection.</p>
             <div class="hero-badges">
-                <div class="badge gold">250+ Youth Reached</div>
+                <div class="badge coral">250+ Youth Reached</div>
                 <div class="badge">Free & Volunteer-Run</div>
-                <div class="badge">Monthly Sessions</div>
             </div>
         </div>
         <div class="scroll-hint">
@@ -853,13 +826,6 @@
         </div>
     </section>
 
-    <!-- ── MISSION STRIP ─────────────────────────── -->
-    <div class="mission-strip">
-        <p>Explore. Understand. Thrive. Est. 2024 · Greater Houston Area</p>
-    </div>
-
-
-
     <!-- ── STORY ─────────────────────────────────── -->
     <section class="story">
         <div class="story-inner">
@@ -867,17 +833,15 @@
                 <p class="eyebrow reveal-item">Our Story</p>
                 <h2 class="reveal-item">Why We Show Up</h2>
                 <p class="reveal-item">
-                    Houston is home to one of the largest refugee populations in the United States. Afghan families who arrived seeking safety now face a new challenge: navigating an unfamiliar education system, often without the language, resources, or support structures that other students take for granted.
+                    Houston is home to one of the largest refugee populations in the United States. Many refugee families who arrived seeking safety now face a new challenge: navigating an unfamiliar education system, often without the language, resources, or support structures that other students take for granted.
                 </p>
                 <p class="reveal-item">
-                    Math Made Simple shows up once a month to close that gap — not with pressure or grades, but with warmth, problem sets, games, and confidence-building exercises designed to meet students exactly where they are. Our sessions focus on group connection, joy, and the quiet confidence that comes from realizing you understand something you didn't before.
+                    Math Made Simple steps up to close that gap — not with pressure or grades, but with warmth, problem sets, games, and confidence-building exercises designed to meet students exactly where they are. Our sessions focus on group connection, joy, and the confidence that comes from realizing you understand something you didn't before. We hope to build long-term relationships and foster life-time skills and mindsets going forward.
                 </p>
             </div>
             <div class="story-visual reveal-item">
-                <!-- swap for real image -->
-                <img src="Media/CBO/Vanguard/9.HEIC" alt="Refugee tutoring session" class="story-img-main">
-                <img src="Media/CBO/Vanguard/8.HEIC" alt="Session detail" class="story-img-accent">
-                
+                <img src="Media/CBO/Vanguard/9.png" alt="Refugee tutoring session" class="story-img-main">
+                <img src="Media/CBO/Vanguard/8.png" alt="Session detail" class="story-img-accent">
             </div>
         </div>
     </section>
@@ -886,24 +850,14 @@
     <section class="what-we-do">
         <div class="wwd-inner">
             <div class="wwd-header reveal-item">
-                <p class="eyebrow">How It Works</p>
-                <h2>What Happens in a Session</h2>
+                <p class="eyebrow">Whats in a session?</p>
+                <h2>Our goals</h2>
             </div>
             <div class="pillars">
                 <div class="pillar reveal-item">
-                    <div class="pillar-num">01</div>
-                    <h3>Level Matching</h3>
-                    <p>We do a quick, low-stakes assessment to understand where each student is — then we group and pair accordingly so no one feels lost or bored.</p>
-                </div>
-                <div class="pillar reveal-item">
-                    <div class="pillar-num">02</div>
-                    <h3>Games & Problem Sets</h3>
-                    <p>Math becomes fun through structured games, collaborative challenges, and problem sets designed to build genuine understanding rather than rote memorization.</p>
-                </div>
-                <div class="pillar reveal-item">
-                    <div class="pillar-num">03</div>
-                    <h3>Confidence Building</h3>
-                    <p>We celebrate every win. Our volunteers are trained to be patient, warm, and encouraging — turning frustration into breakthrough moments, session after session.</p>
+                    <div class="pillar-num">00</div>
+                    <h3></h3>
+                    <p>Our volunteer team at Math Made Simple love interacting with children and we experience joy when we are given the opportunity to conduct sessions focused on both learning and connection. We believe that math can be a vehicle for empowerment.</p>
                 </div>
             </div>
         </div>
@@ -917,28 +871,28 @@
         </div>
         <div class="photo-grid">
             <div class="ph reveal-ph">
-                <img src="Media/CBO/Vanguard/1.HEIC" alt="Session photo 1">
+                <img src="Media/CBO/Vanguard/1.png" alt="Session photo 1">
             </div>
             <div class="ph reveal-ph">
-                <img src="Media/CBO/Vanguard/2.HEIC" alt="Session photo 2">
+                <img src="Media/CBO/Vanguard/2.png" alt="Session photo 2">
             </div>
             <div class="ph reveal-ph">
-                <img src="Media/CBO/Vanguard/3.HEIC" alt="Session photo 3">
+                <img src="Media/CBO/Vanguard/3.png" alt="Session photo 3">
             </div>
             <div class="ph reveal-ph">
-                <img src="Media/CBO/Vanguard/4.HEIC" alt="Session photo 4">
+                <img src="Media/CBO/Vanguard/4.png" alt="Session photo 4">
             </div>
             <div class="ph reveal-ph">
-                <img src="Media/CBO/Vanguard/7.HEIC" alt="Session photo 6">
+                <img src="Media/CBO/Vanguard/7.png" alt="Session photo 6">
             </div>
             <div class="ph reveal-ph">
                 <img src="Media/CBO/Vanguard/14.jpg" alt="Session photo 7">
             </div>
             <div class="ph reveal-ph">
-                <img src="Media/CBO/Vanguard/9.HEIC" alt="Session photo 8">
+                <img src="Media/CBO/Vanguard/9.png" alt="Session photo 8">
             </div>
             <div class="ph reveal-ph">
-                <img src="Media/CBO/Vanguard/11.HEIC" alt="Session photo 9">
+                <img src="Media/CBO/Vanguard/11.png" alt="Session photo 9">
             </div>
             <div class="ph reveal-ph">
                 <img src="Media/CBO/Vanguard/10.jpg" alt="Session photo 10">
@@ -963,9 +917,9 @@
                     <a href="https://kindredvanguard.com" target="_blank" rel="noopener" class="partner-link">Visit Kindred Vanguard ↗</a>
                 </div>
                 <div class="partner-card reveal-item">
-                    <div class="partner-card-tag">Venue Partner</div>
+                    <div class="partner-card-tag">Primary Partner</div>
                     <h3>Houston Multicultural Center</h3>
-                    <p>A community hub that brings together Houston's diverse populations, providing the space and infrastructure for programs like ours to thrive.</p>
+                    <p>A community hub that brings together Houston's diverse populations, providing the space and connections for programs like ours to thrive.</p>
                     <a href="https://www.volunteerhou.org/agency/detail/?agency_id=163363" target="_blank" rel="noopener" class="partner-link">Learn More ↗</a>
                 </div>
             </div>
@@ -1026,10 +980,6 @@
             }
         }, { threshold: 0.3 });
         statObserver.observe(document.getElementById('statsSection'));
-
-
-
-
     </script>
 </body>
 </html>

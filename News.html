@@ -14,8 +14,8 @@
             --ink:        #0a0f1e;
             --ink-mid:    #0e1420;
             --ink-light:  #1a2035;
-            --gold:       #c9a84c;
-            --gold-light: #e2c97e;
+            --coral:      #e8684a;
+            --coral-light: #f4a48e;
             --white:      #ffffff;
             --muted:      rgba(255,255,255,0.4);
         }
@@ -59,7 +59,7 @@
             text-decoration: none;
         }
 
-        .logo span { color: var(--gold); }
+        .logo span { color: var(--coral-light); }
 
         .nav-links { display: flex; gap: 3rem; list-style: none; }
 
@@ -79,13 +79,13 @@
             position: absolute;
             bottom: -3px; left: 0;
             width: 0; height: 1px;
-            background: var(--gold);
+            background: var(--coral);
             transition: width 0.4s ease;
         }
 
-        .nav-links a:hover { color: var(--gold-light); }
+        .nav-links a:hover { color: var(--coral-light); }
         .nav-links a:hover::after { width: 100%; }
-        .nav-links a.active { color: var(--gold-light); }
+        .nav-links a.active { color: var(--coral-light); }
         .nav-links a.active::after { width: 100%; }
 
         @media (min-width: 769px) { .menu-toggle { display: none !important; } }
@@ -109,10 +109,48 @@
         .menu-toggle.active span:nth-child(2) { opacity: 0; }
         .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px,-6px); }
 
-        /* ── PAGE HEADER ──────────────────────────────── */
-        .page-header {
-            padding: 9rem 8% 5rem;
-            border-bottom: 1px solid rgba(201,168,76,0.1);
+        /* ── HERO ─────────────────────────────────────── */
+        .page-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 420px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .page-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #1a2a1a, #0c1220);
+        }
+
+        .page-hero-bg img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.5;
+            animation: heroZoom 12s ease-out forwards;
+        }
+
+        @keyframes heroZoom {
+            from { transform: scale(1.06); }
+            to   { transform: scale(1.0); }
+        }
+
+        .page-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to top, rgba(10,15,30,1) 0%, rgba(10,15,30,0.5) 50%, rgba(10,15,30,0.1) 100%),
+                linear-gradient(to right, rgba(10,15,30,0.5) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 8% 4rem;
         }
 
         .eyebrow {
@@ -120,13 +158,14 @@
             font-weight: 600;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral-light);
             margin-bottom: 1rem;
             opacity: 0;
             animation: fadeUp 0.8s ease-out 0.3s forwards;
+            display: block;
         }
 
-        .page-header h1 {
+        .page-hero-content h1 {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2.8rem, 5vw, 5rem);
             font-weight: 300;
@@ -137,7 +176,7 @@
             animation: fadeUp 1s ease-out 0.5s forwards;
         }
 
-        .page-header p {
+        .page-hero-content p {
             font-size: 1rem;
             color: rgba(255,255,255,0.45);
             max-width: 480px;
@@ -214,13 +253,13 @@
         .event-row:nth-child(4) { transition-delay: 0.21s; }
 
         .event-row.visible { opacity: 1; transform: translateY(0); }
-        .event-row:hover { border-color: rgba(201,168,76,0.25); }
+        .event-row:hover { border-color: rgba(232,104,74,0.3); }
 
         .event-date {
             padding: 1.4rem 0.8rem;
             text-align: center;
             border-right: 1px solid rgba(255,255,255,0.06);
-            background: rgba(201,168,76,0.05);
+            background: rgba(232,104,74,0.06);
             align-self: stretch;
             display: flex;
             flex-direction: column;
@@ -232,7 +271,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
             font-weight: 300;
-            color: var(--gold-light);
+            color: var(--coral-light);
             line-height: 1;
         }
 
@@ -308,7 +347,7 @@
         .news-row:nth-child(5) { transition-delay: 0.28s; }
 
         .news-row.visible { opacity: 1; transform: translateY(0); }
-        .news-row:hover { border-color: rgba(201,168,76,0.25); }
+        .news-row:hover { border-color: rgba(232,104,74,0.3); }
 
         .news-date-block {
             padding: 1.4rem 0.6rem;
@@ -327,7 +366,7 @@
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral-light);
         }
 
         .news-date-year {
@@ -345,7 +384,7 @@
             font-weight: 600;
             letter-spacing: 2.5px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral-light);
             margin-bottom: 0.35rem;
         }
 
@@ -367,19 +406,19 @@
         .news-arrow {
             padding: 0 1.5rem;
             font-size: 1rem;
-            color: rgba(201,168,76,0.3);
+            color: rgba(232,104,74,0.3);
             transition: color 0.3s, transform 0.3s;
             flex-shrink: 0;
         }
 
-        .news-row:hover .news-arrow { color: var(--gold); transform: translateX(4px); }
+        .news-row:hover .news-arrow { color: var(--coral-light); transform: translateX(4px); }
 
         /* ── FOOTER ───────────────────────────────────── */
         footer {
             background: var(--ink-mid);
             padding: 4rem 8%;
             text-align: center;
-            border-top: 1px solid rgba(201,168,76,0.12);
+            border-top: 1px solid rgba(232,104,74,0.2);
         }
 
         footer .eyebrow { animation: none; opacity: 1; display: block; margin-bottom: 0.6rem; }
@@ -417,7 +456,8 @@
 
             .nav-links.active { right: 0; }
 
-            .page-header { padding: 7rem 6% 3.5rem; }
+            .page-hero { height: 50vh; min-height: 320px; }
+            .page-hero-content { padding: 0 6% 3rem; }
             .content { padding: 4rem 6% 5rem; }
 
             .news-row { grid-template-columns: 70px 1fr; }
@@ -440,19 +480,25 @@
         </div>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
-            <li><a href="international.html">International Work</a></li>
+            <li><a href="refugee.html">International Work</a></li>
             <li><a href="Tutoring.html">Tutoring</a></li>
             <li><a href="News.html" class="active">News</a></li>
             <li><a href="About.html">About Us</a></li>
         </ul>
     </nav>
 
-    <!-- ── PAGE HEADER ────────────────────────────── -->
-    <div class="page-header">
-        <p class="eyebrow">Updates &amp; Events</p>
-        <h1>News</h1>
-        <p>Upcoming events and recent updates from Math Made Simple.</p>
-    </div>
+    <!-- ── HERO ───────────────────────────────────── -->
+    <section class="page-hero">
+        <div class="page-hero-bg">
+            <img src="Media/CBO/SouthA/4.JPG" alt="News background">
+        </div>
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-content">
+            <span class="eyebrow">Updates &amp; Events</span>
+            <h1>News</h1>
+            <p>Upcoming events and recent updates from Math Made Simple.</p>
+        </div>
+    </section>
 
     <!-- ── CONTENT ────────────────────────────────── -->
     <div class="content">
@@ -487,14 +533,11 @@
                         <div class="event-month">Mar</div>
                     </div>
                     <div class="event-body">
-                        <div class="event-title">Dialogue Program </div>
+                        <div class="event-title">Dialogue Program</div>
                         <div class="event-detail">Black Power Station, Rautenbach Road, Industrial Area, Makhanda, 6139 <br> 16:30 - 18:30</div>
                     </div>
                     <div class="news-arrow">→</div>
                 </a>
-
-             
-                
 
             </div>
         </div>
@@ -537,8 +580,6 @@
                     </div>
                     <div class="news-arrow">→</div>
                 </a>
-
-              
 
             </div>
         </div>

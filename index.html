@@ -1,3 +1,12 @@
+
+<!--gold to white
+more parnterhsip stuff
+idk -->
+
+<!--Vanguard PNG conversion complete, index heic coversion complete
+-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +22,9 @@
         :root {
             --primary: #0f172a;
             --secondary: #334155;
-            --accent: #3b82f6;
-            --gold: #c9a84c;
-            --gold-light: #e2c97e;
+            --accent: #e8684a;
+            --coral: #e8684a;
+            --coral-light: #f4a48e;
             --light: #f8fafc;
             --text: #1e293b;
             --text-muted: #64748b;
@@ -64,7 +73,7 @@
             text-decoration: none;
         }
 
-        .logo span { color: var(--gold); }
+        .logo span { color: var(--coral-light); }
 
         .nav-links { display: flex; gap: 3rem; list-style: none; }
 
@@ -84,11 +93,11 @@
             position: absolute;
             bottom: -4px; left: 0;
             width: 0; height: 1px;
-            background: var(--gold);
+            background: var(--coral);
             transition: width 0.4s ease;
         }
 
-        .nav-links a:hover { color: var(--gold-light); }
+        .nav-links a:hover { color: var(--coral-light); }
         .nav-links a:hover::after { width: 100%; }
 
         @media (min-width: 769px) { .menu-toggle { display: none !important; } }
@@ -174,7 +183,7 @@
             font-weight: 500;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral-light);
             margin-bottom: 0.8rem;
             opacity: 0;
             transform: translateY(20px);
@@ -193,7 +202,7 @@
             animation: heroIn 1s ease-out 0.65s forwards;
         }
 
-        .hero-title em { font-style: italic; color: var(--gold-light); }
+        .hero-title em { font-style: italic; color: #fff; }
 
         .hero-sub {
             font-size: clamp(0.85rem,1.2vw,1.05rem);
@@ -213,8 +222,8 @@
             gap: 0.8rem;
             padding: 1rem 2.2rem;
             background: transparent;
-            border: 1px solid rgba(201,168,76,0.6);
-            color: var(--gold-light);
+            border: 1px solid rgba(232,104,74,0.6);
+            color: var(--coral-light);
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 500;
@@ -227,11 +236,11 @@
         }
 
         .hero-cta:hover {
-            background: var(--gold);
-            border-color: var(--gold);
-            color: #0a0f1e;
+            background: var(--coral);
+            border-color: var(--coral);
+            color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+            box-shadow: 0 8px 30px rgba(232,104,74,0.35);
         }
 
         .hero-cta svg { width: 14px; height: 14px; transition: transform 0.3s; }
@@ -268,7 +277,7 @@
             font-variant-numeric: tabular-nums;
         }
 
-        .slide-counter .current { font-size: 1.1rem; color: var(--gold); font-weight: 500; }
+        .slide-counter .current { font-size: 1.1rem; color: var(--coral-light); font-weight: 500; }
         .slide-dots { display: flex; flex-direction: column; gap: 0.5rem; }
 
         .sdot {
@@ -279,13 +288,13 @@
             transition: all 0.4s ease;
         }
 
-        .sdot.active { height: 40px; background: var(--gold); }
+        .sdot.active { height: 40px; background: var(--coral); }
 
         .hero-progress {
             position: absolute;
             bottom: 0; left: 0;
             height: 2px;
-            background: var(--gold);
+            background: var(--coral);
             z-index: 4;
             width: 0%;
             transition: width 0.1s linear;
@@ -294,8 +303,8 @@
         /* ─── STATS STRIP ─────────────────────────────── */
         .stats-strip {
             background: #0e1420;
-            border-top: 1px solid rgba(201,168,76,0.15);
-            border-bottom: 1px solid rgba(201,168,76,0.08);
+            border-top: 1px solid rgba(232,104,74,0.2);
+            border-bottom: 1px solid rgba(232,104,74,0.1);
             padding: 2.2rem 8%;
             display: flex;
             justify-content: center;
@@ -325,7 +334,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.6rem;
             font-weight: 300;
-            color: var(--gold-light);
+            color: #fff;
             line-height: 1;
             margin-bottom: 0.35rem;
         }
@@ -347,7 +356,7 @@
             font-weight: 600;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--accent);
+            color: var(--coral);
             margin-bottom: 1rem;
             opacity: 0;
             transform: translateY(15px);
@@ -386,7 +395,7 @@
             font-size: 1.25rem;
             line-height: 1.85;
             color: var(--primary);
-            border-left: 3px solid var(--accent);
+            border-left: 3px solid var(--coral);
             padding-left: 2rem;
             max-width: 700px;
             opacity: 0;
@@ -424,9 +433,9 @@
             font-size: 0.8rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral-light);
             text-decoration: none;
-            border-bottom: 1px solid rgba(201,168,76,0.4);
+            border-bottom: 1px solid rgba(244,164,142,0.4);
             padding-bottom: 2px;
             transition: border-color 0.3s, color 0.3s;
             white-space: nowrap;
@@ -434,7 +443,7 @@
             flex-shrink: 0;
         }
 
-        .spotlight-link:hover { color: var(--gold-light); border-color: var(--gold-light); }
+        .spotlight-link:hover { color: #fff; border-color: #fff; }
 
         .projects-list { display: flex; flex-direction: column; gap: 2px; }
 
@@ -461,7 +470,7 @@
 
         .project-row:hover {
             background: rgba(255,255,255,0.06);
-            border-color: rgba(201,168,76,0.3);
+            border-color: rgba(232,104,74,0.4);
         }
 
         .project-row-img {
@@ -483,7 +492,7 @@
             font-weight: 600;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral-light);
         }
 
         .project-row-name {
@@ -503,11 +512,11 @@
         .project-row-arrow {
             padding: 0 1.8rem;
             font-size: 1.1rem;
-            color: rgba(201,168,76,0.35);
+            color: rgba(232,104,74,0.4);
             transition: color 0.3s, transform 0.3s;
         }
 
-        .project-row:hover .project-row-arrow { color: var(--gold); transform: translateX(4px); }
+        .project-row:hover .project-row-arrow { color: var(--coral-light); transform: translateX(4px); }
 
         /* ─── TESTIMONIALS ────────────────────────────── */
         .testimonials { background: var(--light); padding: 8rem 8%; }
@@ -555,7 +564,7 @@
 
         .t-card:hover {
             box-shadow: 0 20px 60px rgba(15,23,42,0.1);
-            border-color: var(--accent);
+            border-color: var(--coral);
             transform: translateY(-4px);
         }
 
@@ -564,7 +573,7 @@
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: var(--accent);
+            color: var(--coral);
             margin-bottom: 1rem;
         }
 
@@ -584,7 +593,7 @@
             background: #0a0f1e;
             padding: 5rem 8%;
             text-align: center;
-            border-top: 1px solid rgba(201,168,76,0.15);
+            border-top: 1px solid rgba(232,104,74,0.2);
         }
 
         .contact h2 {
@@ -679,10 +688,10 @@
     <section class="hero" id="home">
 
         <div class="slide active">
-            <img class="slide-img" src="Media/CBO/Vanguard/1.HEIC" alt="Refugee tutoring session">
+            <img class="slide-img" src="Media/CBO/Vanguard/1.png" alt="Refugee tutoring session">
         </div>
         <div class="slide">
-            <img class="slide-img" src="Media/CBO/Vanguard/2.HEIC" alt="Refugee tutoring session">
+            <img class="slide-img" src="Media/CBO/Vanguard/2.png" alt="Refugee tutoring session">
         </div>
         <div class="slide">
             <img class="slide-img" src="Media/CBO/SouthA/1.png" alt="South Africa">
@@ -691,13 +700,13 @@
             <img class="slide-img" src="Media/CBO/FEE/1.png" alt="Fundraiser">
         </div>
         <div class="slide">
-            <img class="slide-img" src="Media/CBO/Vanguard/3.HEIC" alt="Refugee tutoring session">
+            <img class="slide-img" src="Media/CBO/Vanguard/3.png" alt="Refugee tutoring session">
         </div>
         <div class="slide">
             <img class="slide-img" src="Media/CBO/Vanguard/5.JPG" alt="Refugee tutoring session">
         </div>
         <div class="slide">
-            <img class="slide-img" src="Media/CBO/Vanguard/9.HEIC" alt="Refugee tutoring session">
+            <img class="slide-img" src="Media/CBO/Vanguard/9.png" alt="Refugee tutoring session">
         </div>
         <div class="slide">
             <img class="slide-img" src="Media/CBO/Vanguard/10.jpg" alt="Refugee tutoring session">
@@ -765,7 +774,7 @@
                 Math Made Simple is an organization dedicated to helping students find joy in problem-solving and tackling difficult math questions. We believe that while math can be tedious and requires patience, it becomes incredibly rewarding — and even fun — once students begin to understand and master it. Our goal is to guide students through that journey: building confidence, curiosity, and a love for learning through engaging and thoughtful instruction.
             </p>
             <p class="about-description reveal-item" style="margin-top: -1rem;">
-                Beyond one-on-one tutoring, our mission extends globally. We run free math programs for refugee youth in Houston in partnership with Kindred Vanguard, virtually tutor students in the township of Makhanda, South Africa weekly, and fundraise to expand access to education in rural India through Pratham USA. Math, for us, is a vehicle for opportunity, for connection, and for change.
+                Beyond one-on-one tutoring, our mission extends globally. We run free math programs for refugee youth in coordination with multiple organizations that allow for us to continue our mission. These organizations ensure our reach is international, deep, and effective. Math, for us, is a vehicle for opportunity, for connection, and for change.
             </p>
             <p class="about-highlight reveal-item">
                 With over <strong>300+ students</strong> and an excited team of instructors from Houston-area schools and top colleges, we are here to help your child feel ahead of the curve in math.
@@ -778,11 +787,10 @@
         <div class="spotlight-inner">
             <div class="spotlight-header">
                 <h2 class="spotlight-title reveal-item">Community Projects</h2>
-                <a href="international.html" class="spotlight-link">See all →</a>
             </div>
 
             <div class="projects-list">
-                <a href="refugee.html" class="project-row reveal-item">
+                <a href="Community.html" class="project-row reveal-item">
                     <img src="Media/CBO/Vanguard/5.JPG" alt="Afghan Refugee Tutoring" class="project-row-img">
                     <div class="project-row-body">
                         <div class="project-row-tag">Houston · In-Person · Free</div>
@@ -792,7 +800,7 @@
                     <div class="project-row-arrow">→</div>
                 </a>
 
-                <a href="international.html" class="project-row reveal-item">
+                <a href="refugee.html" class="project-row reveal-item">
                     <img src="Media/CBO/SouthA/1.png" alt="South Africa Partnership" class="project-row-img">
                     <div class="project-row-body">
                         <div class="project-row-tag">Makhanda · Virtual + Travel</div>
@@ -802,7 +810,7 @@
                     <div class="project-row-arrow">→</div>
                 </a>
 
-                <a href="international.html" class="project-row reveal-item">
+                <a href="refugee.html" class="project-row reveal-item">
                     <img src="Media/CBO/FEE/1.png" alt="Education Equality Fundraiser" class="project-row-img">
                     <div class="project-row-body">
                         <div class="project-row-tag">India · Fundraising</div>
@@ -812,50 +820,25 @@
                     <div class="project-row-arrow">→</div>
                 </a>
 
-                <a href="About.html" class="project-row reveal-item">
+                <a  class="project-row reveal-item">
                     <img src="Media/CBO/Vanguard/10.jpg" alt="E.N.G.I.N.E. Partner Program" class="project-row-img">
                     <div class="project-row-body">
                         <div class="project-row-tag">Clements High School · Partnership</div>
                         <div class="project-row-name">E.N.G.I.N.E. Partner Program</div>
                         <div class="project-row-desc">Collaboration with Clements High School students to expand our tutoring reach.</div>
                     </div>
-                    <div class="project-row-arrow">→</div>
+                    <div class="project-row-arrow">Description Soon</div>
                 </a>
 
-                <a href="About.html" class="project-row reveal-item">
+                <a class="project-row reveal-item">
                     <img src="Media/CBO/Vanguard/13.jpg" alt="First Checkmate Partnership" class="project-row-img">
                     <div class="project-row-body">
                         <div class="project-row-tag">Kinkaid School · Partnership</div>
                         <div class="project-row-name">First Checkmate Partnership</div>
                         <div class="project-row-desc">Joint programming to bring math and logic to underserved students.</div>
                     </div>
-                    <div class="project-row-arrow">→</div>
+                    <div class="project-row-arrow">Description Soon</div>
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ─── TESTIMONIALS ──────────────────────────── -->
-    <section class="testimonials">
-        <div class="testimonials-inner">
-            <h2 class="reveal-item">What Parents Are Saying</h2>
-            <div class="stars-row reveal-item">⭐⭐⭐⭐⭐</div>
-            <div class="t-grid">
-                <div class="t-card reveal-item">
-                    <div class="t-header">Middle School Parent, Bellaire</div>
-                    <div class="t-text">"My son said he learned a lot. It was nice he took his shoes off. Very polite."</div>
-                    <div class="t-stars">★★★★★</div>
-                </div>
-                <div class="t-card reveal-item">
-                    <div class="t-header">Lower School Parent, West U</div>
-                    <div class="t-text">"He got along well with the children and kept them engaged, which is sometimes a challenge!"</div>
-                    <div class="t-stars">★★★★★</div>
-                </div>
-                <div class="t-card reveal-item">
-                    <div class="t-header">Middle School Parent, Sugar Land</div>
-                    <div class="t-text">"Prepared for the session. Eased in well with the kid. Connected well. Calm and Composed. Patient."</div>
-                    <div class="t-stars">★★★★★</div>
-                </div>
             </div>
         </div>
     </section>

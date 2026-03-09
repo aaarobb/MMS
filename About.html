@@ -13,13 +13,12 @@
         :root {
             --ink:        #0c0f1a;
             --ink-light:  #1a2035;
-            --gold:       #c9a84c;
-            --gold-light: #e2c97e;
+            --coral:      #e8684a;
+            --coral-light: #f4a48e;
             --sand:       #e8dcc8;
             --sand-light: #f5f0e8;
             --white:      #ffffff;
             --muted:      #8a8f9e;
-            --accent:     #3b82f6;
             --text:       #1e293b;
             --text-muted: #64748b;
         }
@@ -45,7 +44,7 @@
             align-items: center;
             background: rgba(12, 15, 26, 0.97);
             backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(201,168,76,0.1);
+            border-bottom: 1px solid rgba(232,104,74,0.15);
             animation: navDrop 0.9s ease-out both;
         }
 
@@ -63,7 +62,7 @@
             letter-spacing: 0.5px;
         }
 
-        .logo span { color: var(--gold); }
+        .logo span { color: var(--coral-light); }
 
         .nav-links { display: flex; gap: 2.8rem; list-style: none; }
 
@@ -83,11 +82,11 @@
             position: absolute;
             bottom: -3px; left: 0;
             width: 0; height: 1px;
-            background: var(--gold);
+            background: var(--coral);
             transition: width 0.4s ease;
         }
 
-        .nav-links a:hover { color: var(--gold-light); }
+        .nav-links a:hover { color: var(--coral-light); }
         .nav-links a:hover::after { width: 100%; }
 
         @media (min-width: 769px) { .menu-toggle { display: none !important; } }
@@ -123,7 +122,7 @@
             font-weight: 600;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral-light);
             margin-bottom: 1.2rem;
             opacity: 0;
             animation: fadeUp 0.8s ease-out 0.3s forwards;
@@ -186,7 +185,7 @@
             transform: translateX(-50%);
             width: 50px;
             height: 2px;
-            background: var(--gold);
+            background: var(--coral);
         }
 
         /* ── TEAM MEMBER CARD ─────────────────────── */
@@ -215,8 +214,8 @@
         }
 
         .team-member:hover .headshot {
-            box-shadow: 0 12px 36px rgba(201,168,76,0.2);
-            border-color: var(--gold-light);
+            box-shadow: 0 12px 36px rgba(232,104,74,0.2);
+            border-color: var(--coral-light);
         }
 
         .headshot img {
@@ -238,7 +237,7 @@
             font-weight: 500;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral);
             margin-bottom: 0.25rem;
         }
 
@@ -300,7 +299,7 @@
             background: var(--ink);
             padding: 4rem 8%;
             text-align: center;
-            border-top: 1px solid rgba(201,168,76,0.12);
+            border-top: 1px solid rgba(232,104,74,0.2);
         }
 
         .contact-footer h3 {
@@ -316,7 +315,7 @@
             font-weight: 600;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--coral-light);
             margin-bottom: 0.8rem;
         }
 
@@ -374,6 +373,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="refugee.html">International Work</a></li>
             <li><a href="Tutoring.html">Tutoring</a></li>
+            <li><a href="News.html">News</a></li>
             <li><a href="About.html">About Us</a></li>
         </ul>
     </nav>
@@ -506,7 +506,7 @@
                 <div class="member-school">Strake Jesuit College Preparatory</div>
             </div>
             <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/update1/clare.heic" alt="Clare Hayes"></div>
+                <div class="headshot"><img src="Media/Headshots/update1/clare.png" alt="Clare Hayes"></div>
                 <div class="member-name">Clare Hayes</div>
                 <div class="member-school">University of Notre Dame</div>
             </div>
@@ -517,7 +517,7 @@
                 <div class="member-school">Clements High School</div>
             </div>
             <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/update2/aylin.heic" alt="Aylin Korkmaz"></div>
+                <div class="headshot"><img src="Media/Headshots/update2/aylin.png" alt="Aylin Korkmaz"></div>
                 <div class="member-name">Aylin Korkmaz</div>
                 <div class="member-title">E.N.G.I.N.E. Partner</div>
                 <div class="member-school">Clements High School</div>
@@ -544,7 +544,7 @@
                 <div class="member-school">Texas A&M</div>
             </div>
             <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/update2/estrada.heic" alt="Samuel Estrada"></div>
+                <div class="headshot"><img src="Media/Headshots/update2/estrada.png" alt="Samuel Estrada"></div>
                 <div class="member-name">Samuel Estrada</div>
                 <div class="member-school">Strake Jesuit College Preparatory</div>
             </div>
@@ -574,7 +574,7 @@
                 <div class="member-school">Clements High School</div>
             </div>
             <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/update3/alex.HEIC" alt="Alexander Stansberry"></div>
+                <div class="headshot"><img src="Media/Headshots/update3/alex.png" alt="Alexander Stansberry"></div>
                 <div class="member-name">Alexander Stansberry</div>
                 <div class="member-school">Strake Jesuit College Preparatory</div>
             </div>
@@ -584,12 +584,12 @@
                 <div class="member-school">Strake Jesuit College Preparatory</div>
             </div>
             <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/update4/matthew.heic" alt="Matthew Mamera"></div>
+                <div class="headshot"><img src="Media/Headshots/update4/matthew.png" alt="Matthew Mamera"></div>
                 <div class="member-name">Matthew Mamera</div>
                 <div class="member-school">Strake Jesuit College Preparatory</div>
             </div>
             <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/update2/dylan.HEIC" alt="Dylan Jett"></div>
+                <div class="headshot"><img src="Media/Headshots/update2/dylan.png" alt="Dylan Jett"></div>
                 <div class="member-name">Dylan Jett</div>
                 <div class="member-title">First Checkmate Partner</div>
                 <div class="member-school">The Kinkaid School</div>
@@ -606,12 +606,12 @@
                 <div class="member-school">Strake Jesuit College Preparatory</div>
             </div>
             <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/update1/BB.heic" alt="Bode Bosell"></div>
+                <div class="headshot"><img src="Media/Headshots/update1/BB.png" alt="Bode Bosell"></div>
                 <div class="member-name">Bode Bosell</div>
                 <div class="member-school">Strake Jesuit College Preparatory</div>
             </div>
             <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/update1/eshaan.heic" alt="Eshaan Vakil"></div>
+                <div class="headshot"><img src="Media/Headshots/update1/eshaan.png" alt="Eshaan Vakil"></div>
                 <div class="member-name">Eshaan Vakil</div>
                 <div class="member-school">Strake Jesuit College Preparatory</div>
             </div>

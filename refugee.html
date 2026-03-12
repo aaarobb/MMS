@@ -198,7 +198,6 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* scroll hint */
         .scroll-hint {
             position: absolute;
             bottom: 2.5rem;
@@ -230,85 +229,6 @@
             0%, 100% { opacity: 0.4; }
             50%       { opacity: 1; }
         }
-
-        /* ── PROGRAM SELECTOR ─────────────────────── */
-        .program-selector {
-            background: var(--ink-light);
-            padding: 3rem 8%;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            border-bottom: 1px solid rgba(232,104,74,0.12);
-            position: sticky;
-            top: 72px;
-            z-index: 100;
-        }
-
-        .selector-label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--muted);
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .selector-tabs {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-
-        .stab {
-            padding: 0.75rem 1.6rem;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 2px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-            text-align: left;
-        }
-
-        .stab:hover {
-            background: rgba(255,255,255,0.07);
-            border-color: rgba(232,104,74,0.35);
-        }
-
-        .stab.active {
-            background: rgba(232,104,74,0.1);
-            border-color: var(--coral);
-        }
-
-        .stab-loc {
-            font-size: 0.6rem;
-            font-weight: 600;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--coral-light);
-        }
-
-        .stab-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: rgba(255,255,255,0.5);
-            transition: color 0.3s;
-        }
-
-        .stab.active .stab-title,
-        .stab:hover .stab-title { color: var(--white); }
-
-        .stab-link {
-            text-decoration: none;
-        }
-
-        /* ── PROGRAM SECTIONS ─────────────────────── */
-        .program { display: none; }
-        .program.active { display: block; }
 
         /* ── CONTENT BLOCK ────────────────────────── */
         .content-block {
@@ -366,6 +286,10 @@
             margin: 0;
         }
 
+        .callout p + p {
+            margin-top: 1rem;
+        }
+
         .img-stack .img-main {
             width: 100%;
             aspect-ratio: 4/5;
@@ -375,48 +299,152 @@
             background: var(--ink-light);
         }
 
-        .prog-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1px;
-            background: #e2d9c8;
-            border: 1px solid #e2d9c8;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 2.5rem;
+        /* ── PARTNERS SECTION ─────────────────────── */
+        .partners-section {
+            background: var(--ink);
+            padding: 6rem 8%;
+            border-top: 1px solid rgba(232,104,74,0.12);
         }
 
-        .prog-stat {
-            background: var(--white);
-            padding: 1.8rem 1.5rem;
-            text-align: center;
+        .partners-inner {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .prog-stat-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            font-weight: 300;
-            color: var(--ink);
-            line-height: 1;
-            margin-bottom: 0.3rem;
+        .partners-section .section-header {
+            margin-bottom: 3.5rem;
         }
 
-        .prog-stat-label {
+        .partners-section .eyebrow {
             font-size: 0.68rem;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--coral-light);
+            margin-bottom: 0.8rem;
+        }
+
+        .partners-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+            font-weight: 300;
+            color: var(--white);
+        }
+
+        .partners-list {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 3rem;
+        }
+
+        .partner-row {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.4rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            text-decoration: none;
+            transition: padding-left 0.3s ease;
+            cursor: default;
+        }
+
+        a.partner-row {
+            cursor: pointer;
+        }
+
+        a.partner-row:hover {
+            padding-left: 0.5rem;
+        }
+
+        a.partner-row:hover .partner-name {
+            color: var(--coral-light);
+        }
+
+        a.partner-row:hover .partner-arrow {
+            opacity: 1;
+            transform: translateX(3px);
+            color: var(--coral-light);
+        }
+
+        .partner-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.88);
+            transition: color 0.3s;
+            flex-shrink: 0;
+        }
+
+        .partner-dash {
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .partner-location {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
             color: var(--muted);
+            flex-shrink: 0;
         }
 
-        /* ── CTA BLOCK ────────────────────────────── */
-        .cta-block {
-            background: var(--ink);
+        .partner-arrow {
+            width: 14px;
+            height: 14px;
+            color: var(--muted);
+            opacity: 0.5;
+            transition: opacity 0.3s, transform 0.3s, color 0.3s;
+            flex-shrink: 0;
+        }
+
+        .coming-soon-block {
+            border-top: 1px solid rgba(232,104,74,0.2);
+            padding-top: 2rem;
+        }
+
+        .coming-soon-block .cs-tag {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--coral-light);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon-block ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+
+        .coming-soon-block li {
+            font-size: 0.92rem;
+            color: rgba(232,220,200,0.45);
+            padding-left: 1.2rem;
+            position: relative;
+            font-style: italic;
+        }
+
+        .coming-soon-block li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: rgba(232,104,74,0.4);
+        }
+
+        /* ── COLLABORATE ──────────────────────────── */
+        .collaborate {
+            background: var(--ink-light);
             padding: 5rem 8%;
             text-align: center;
+            border-top: 1px solid rgba(232,104,74,0.12);
         }
 
-        .cta-block .eyebrow {
+        .collaborate .eyebrow {
             font-size: 0.7rem;
             font-weight: 600;
             letter-spacing: 4px;
@@ -425,75 +453,17 @@
             margin-bottom: 1rem;
         }
 
-        .cta-block h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 3.5vw, 3rem);
-            font-weight: 300;
-            color: var(--white);
-            margin-bottom: 1rem;
-        }
-
-        .cta-block p {
-            font-size: 1rem;
-            color: rgba(232,220,200,0.6);
-            max-width: 500px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.9;
-        }
-
-        .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 1.1rem 2.8rem;
-            background: var(--coral);
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            border-radius: 2px;
-            transition: all 0.35s ease;
-        }
-
-        .cta-btn:hover {
-            background: var(--coral-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(232,104,74,0.35);
-        }
-
-        .cta-btn svg { width: 14px; height: 14px; transition: transform 0.3s; }
-        .cta-btn:hover svg { transform: translateX(4px); }
-
-        /* ── COLLABORATE ──────────────────────────── */
-        .collaborate {
-            background: var(--sand-light);
-            padding: 5rem 8%;
-            text-align: center;
-            border-top: 1px solid #e2d9c8;
-        }
-
-        .collaborate .eyebrow {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--coral);
-            margin-bottom: 1rem;
-        }
-
         .collaborate h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
             font-weight: 400;
-            color: var(--ink);
+            color: var(--white);
             margin-bottom: 0.8rem;
         }
 
         .collaborate p {
             font-size: 0.95rem;
-            color: var(--text-muted);
+            color: rgba(232,220,200,0.6);
             margin-bottom: 2rem;
             line-height: 1.8;
         }
@@ -507,11 +477,11 @@
 
         .chip {
             font-size: 0.82rem;
-            color: var(--ink);
-            border: 1px solid #c8bfae;
+            color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.12);
             border-radius: 2px;
             padding: 0.6rem 1.3rem;
-            background: var(--white);
+            background: rgba(255,255,255,0.04);
         }
 
         /* ── FOOTER ───────────────────────────────── */
@@ -555,6 +525,7 @@
         .reveal-item.visible { opacity: 1; transform: translateY(0); }
         .reveal-item:nth-child(2) { transition-delay: 0.1s; }
         .reveal-item:nth-child(3) { transition-delay: 0.2s; }
+        .reveal-item:nth-child(4) { transition-delay: 0.3s; }
 
         /* ── RESPONSIVE ───────────────────────────── */
         @media (max-width: 768px) {
@@ -574,17 +545,15 @@
             }
 
             .nav-links.active { right: 0; }
-            .nav-dropdown:hover .dropdown-menu { display: none; }
 
-            .program-selector { padding: 2rem 5%; flex-direction: column; align-items: flex-start; gap: 1rem; position: static; }
             .two-col { grid-template-columns: 1fr; gap: 3rem; }
             .img-stack { order: -1; }
             .img-stack .img-main { aspect-ratio: 3/2; }
             .content-block { padding: 3.5rem 6%; }
-            .prog-stats { grid-template-columns: repeat(2, 1fr); }
-            .cta-block { padding: 4rem 6%; }
             .collaborate { padding: 4rem 6%; }
+            .partners-section { padding: 4rem 6%; }
         }
+
     </style>
 </head>
 <body>
@@ -613,7 +582,7 @@
         <div class="page-hero-content">
             <p class="page-hero-eyebrow">Global Impact · Math Made Simple</p>
             <h1>International<br><em>Outreach</em></h1>
-            <p>From the townships of Makhanda to rural India — we bring math education and community support to students around the world.</p>
+            <p>Spreading creativity and connection across borders — from South Africa to India to East Africa and beyond.</p>
         </div>
         <div class="scroll-hint">
             <span>Scroll</span>
@@ -621,91 +590,102 @@
         </div>
     </section>
 
-    <!-- ── PROGRAM SELECTOR ─────────────────────── -->
-    <div class="program-selector">
-        <span class="selector-label">Choose Program</span>
-        <div class="selector-tabs">
-            <button class="stab active" data-program="southafrica">
-                <span class="stab-loc">Makhanda · South Africa</span>
-                <span class="stab-title">South Africa Partnership</span>
-            </button>
-            <button class="stab" data-program="india">
-                <span class="stab-loc">Rural India · Pratham USA</span>
-                <span class="stab-title">Education Equality Fundraiser</span>
-            </button>
-            <a href="Community.html" class="stab stab-link">
-                <span class="stab-loc">Greater Houston Area</span>
-                <span class="stab-title">Refugee Youth Tutoring ↗</span>
-            </a>
+    <!-- ── SOUTH AFRICA CONTENT ──────────────────── -->
+    <div class="content-block">
+        <div class="two-col">
+            <div class="prog-body">
+                <p class="reveal-item">Focused on spreading creativity and connection, Math Made Simple has gone international. Starting with a partnership with <a href="https://www.awarenet.org" target="_blank" rel="noopener noreferrer">Awarenet</a>, our South Africa Team virtually tutors children in the township of Makhanda, South Africa every Monday morning. Makhanda is among the areas with the lowest levels of math proficiency in the world — a gap we are determined to help close.</p>
+
+                <div class="callout reveal-item">
+                    <div class="callout-tag">March 2025 · Travel Program</div>
+                    <p>This past March, our team travelled to Makhanda. It was an experience of a lifetime — in partnership with Awarenet, Rhodes University, and multiple other organizations, we continued our math program in-person, directly connecting with the students we had been working with over Zoom.</p>
+                    <p>In addition to this, fueled by curiosity, we worked on a short documentary on the anti-apartheid movement — exploring the history of colonialism in South Africa, the resistance of the Xhosa people, and the forces that shaped the broader struggle against apartheid. We are extremely grateful to the countless individuals who made this trip so memorable.</p>
+                    <p>Our other international teams will be taking trips soon. Stay tuned for more information!</p>
+                </div>
+            </div>
+            <div class="img-stack reveal-item">
+                <img src="Media/CBO/SouthA/4.JPG" alt="South Africa program" class="img-main">
+            </div>
         </div>
     </div>
 
-    <!-- ══ SOUTH AFRICA ════════════════════════════ -->
-    <div class="program active" id="southafrica">
-        <div class="content-block">
-            <div class="two-col">
-                <div class="prog-body">
-                    <p class="reveal-item">In partnership with <a href="https://www.awarenet.org" target="_blank" rel="noopener noreferrer">Awarenet</a>, we virtually tutor children in the township of Makhanda, South Africa every Monday morning. Makhanda is among the areas with the lowest levels of math proficiency in the world — a gap we are determined to help close.</p>
-                    <p class="reveal-item">Over time, we have built strong, lasting relationships with our students while watching them gradually improve their skills. We are currently preparing them for the <strong>South African Math Olympiad</strong>.</p>
-                    <div class="callout reveal-item">
-                        <div class="callout-tag">March 2025 · Travel Program</div>
-                        <p>Our team traveled to Makhanda this March. In partnership with Awarenet, Rhodes University, and local churches, we continued our in-person math programs, participated in community service, and created a short documentary on the anti-apartheid movement — exploring the history of colonialism, the resistance of the Xhosa people, and the forces that shaped the broader struggle.</p>
-                    </div>
-                </div>
-                <div class="img-stack reveal-item">
-                    <img src="Media/CBO/SouthA/4.JPG" alt="South Africa program" class="img-main">
-                </div>
+    <!-- ── PARTNERS SECTION ───────────────────────── -->
+    <div class="partners-section">
+        <div class="partners-inner">
+            <div class="section-header reveal-item">
+                <p class="eyebrow">Global Network</p>
+                <h2>Partners</h2>
             </div>
-        </div>
 
-        <div class="cta-block">
-            <p class="eyebrow">Our Partner</p>
-            <h3>Awarenet</h3>
-            <p>Awarenet works to empower communities in the Eastern Cape through education, skills development, and technology access.</p>
-            <a href="https://www.awarenet.org" target="_blank" rel="noopener noreferrer" class="cta-btn">
-                Visit Awarenet
-                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M1 7h12M8 2l5 5-5 5"/>
-                </svg>
-            </a>
-        </div>
-    </div>
+            <div class="partners-list">
+                <a href="https://www.awarenet.org" target="_blank" rel="noopener noreferrer" class="partner-row reveal-item">
+                    <span class="partner-name">Awarenet</span>
+                    <span class="partner-dash"></span>
+                    <span class="partner-location">South Africa</span>
+                    <svg class="partner-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+                </a>
 
-    <!-- ══ INDIA ════════════════════════════════════ -->
-    <div class="program" id="india">
-        <div class="content-block">
-            <div class="prog-stats reveal-item">
-                <div class="prog-stat">
-                    <div class="prog-stat-num">$3k+</div>
-                    <div class="prog-stat-label">Raised So Far</div>
-                </div>
-                <div class="prog-stat">
-                    <div class="prog-stat-num">Rural</div>
-                    <div class="prog-stat-label">India Focus</div>
-                </div>
+                <a href="https://www.relonkenya.or.ke" target="_blank" rel="noopener noreferrer" class="partner-row reveal-item">
+                    <span class="partner-name">RELON-Kenya Foundation</span>
+                    <span class="partner-dash"></span>
+                    <span class="partner-location">Kenya</span>
+                    <svg class="partner-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+                </a>
+               
+                <a href="https://ciyota.org" target="_blank" rel="noopener noreferrer" class="partner-row reveal-item">
+                    <span class="partner-name">CIYOTA</span>
+                    <span class="partner-dash"></span>
+                    <span class="partner-location">Uganda</span>
+                    <svg class="partner-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+                </a>
+                <a href="https://indoamericanpublicschool.com" target="_blank" rel="noopener noreferrer" class="partner-row reveal-item">
+                    <span class="partner-name">Indo American Public School</span>
+                    <span class="partner-dash"></span>
+                    <span class="partner-location">India</span>
+                    <svg class="partner-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+                </a>
+                
+                <a href="https://prathamusa.org" target="_blank" rel="noopener noreferrer" class="partner-row reveal-item">
+                    <span class="partner-name">Pratham USA</span>
+                    <span class="partner-dash"></span>
+                    <span class="partner-location">India</span>
+                    <svg class="partner-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+                </a>
+
+
+                <a href="https://www.ru.ac.za" target="_blank" rel="noopener noreferrer" class="partner-row reveal-item">
+                    <span class="partner-name">Rhodes university </span>
+                    <span class="partner-dash"></span>
+                    <span class="partner-location">South Africa</span>
+                    <svg class="partner-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+                </a>
+                
+
+                <a href="https://www.facebook.com/THEBLACKPOWERSTATION/" target="_blank" rel="noopener noreferrer" class="partner-row reveal-item">
+                    <span class="partner-name">The Black Power Station </span>
+                    <span class="partner-dash"></span>
+                    <span class="partner-location">South Africa</span>
+                    <svg class="partner-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+                </a>
+                <a href="https://youthvoicescommunity.org" target="_blank" rel="noopener noreferrer" class="partner-row reveal-item">
+                    <span class="partner-name">Youth Voice Community (YVC) </span>
+                    <span class="partner-dash"></span>
+                    <span class="partner-location">Kenya</span>
+                    <svg class="partner-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+                </a>
+
+
+
+              
             </div>
-            <div class="two-col">
-                <div class="prog-body">
-                    <p class="reveal-item">In partnership with <a href="https://prathamusa.org" target="_blank" rel="noopener noreferrer">Pratham USA</a>, we are raising funds to expand access to quality education for children in rural India.</p>
-                    <p class="reveal-item">Pratham is one of the largest and most respected education nonprofits in India, reaching millions of children each year with proven, low-cost learning programs. We support their mission by fundraising directly through our dedicated campaign link — every dollar goes straight to them.</p>
-                    <p class="reveal-item">We have currently raised upwards of <strong>$3,000</strong> and are continuing to grow that number.</p>
-                </div>
-                <div class="img-stack reveal-item">
-                    <img src="Media/CBO/FEE/2.JPG" alt="Fundraiser for Education Equality" class="img-main">
-                </div>
-            </div>
-        </div>
 
-        <div class="cta-block">
-            <p class="eyebrow">Our Partner & Support Avenue</p>
-            <h3>Pratham USA</h3>
-            <p>Use Pratham USA's specific donation link provided below to contribute directly to Pratham USA's programs for children in underprivileged villages across India.</p>
-            <a href="https://give.prathamusa.org/campaign/731568/donate?utm_source=math-made-simple&utm_medium=partners&utm_campaign=diwali-2025" target="_blank" rel="noopener noreferrer" class="cta-btn">
-                Donate Now
-                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M1 7h12M8 2l5 5-5 5"/>
-                </svg>
-            </a>
+            <div class="coming-soon-block reveal-item">
+                <div class="cs-tag">Coming Very Soon</div>
+                <ul>
+                    <li>Partnerships with more schools &amp; organizations across India</li>
+                    <li>Partnerships with schools &amp; organizations across Central America</li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -743,52 +723,24 @@
             navLinks.classList.toggle('active');
         });
 
-        document.querySelectorAll('.nav-links > li > a:not(.nav-dropdown a)').forEach(a => {
+        document.querySelectorAll('.nav-links > li > a').forEach(a => {
             a.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
                 navLinks.classList.remove('active');
             });
         });
 
-        // Tab switching
-        const stabs    = document.querySelectorAll('.stab');
-        const programs = document.querySelectorAll('.program');
-
-        stabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                stabs.forEach(t => t.classList.remove('active'));
-                programs.forEach(p => p.classList.remove('active'));
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.program).classList.add('active');
-                triggerReveals();
-            });
-        });
-
-        // Handle #india anchor on page load
-        if (window.location.hash === '#india') {
-            stabs.forEach(t => t.classList.remove('active'));
-            programs.forEach(p => p.classList.remove('active'));
-            document.querySelector('[data-program="india"]').classList.add('active');
-            document.getElementById('india').classList.add('active');
-        }
-
         // Scroll reveal
-        function triggerReveals() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        e.target.classList.add('visible');
-                        observer.unobserve(e.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.program.active .reveal-item:not(.visible)').forEach(el => {
-                observer.observe(el);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
             });
-        }
+        }, { threshold: 0.1 });
 
-        triggerReveals();
+        document.querySelectorAll('.reveal-item').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>

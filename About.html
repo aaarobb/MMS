@@ -260,6 +260,16 @@
 
         .founder-grid .member-name { font-size: 1.2rem; }
 
+        /* ── BOARD OF DIRECTORS ───────────────────── */
+        .directors-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
         /* ── EXEC BOARD ───────────────────────────── */
         .codirectors-grid {
             display: grid;
@@ -346,6 +356,7 @@
 
             .page-header { padding: 8rem 6% 4rem; }
 
+            .directors-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
             .codirectors-grid { grid-template-columns: 1fr; gap: 2rem; }
             .board-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
             .volunteers-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 2rem; }
@@ -356,6 +367,7 @@
         }
 
         @media (max-width: 480px) {
+            .directors-grid { grid-template-columns: 1fr; }
             .board-grid { grid-template-columns: 1fr; }
             .volunteers-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1.5rem; }
         }
@@ -401,6 +413,42 @@
 
     <div class="section-divider"></div>
 
+    <!-- ── BOARD OF DIRECTORS ───────────────────── -->
+    <section class="team-section">
+        <h2 class="section-title">Board of Directors</h2>
+        <div class="directors-grid">
+            <div class="team-member">
+                <div class="headshot"><img src="Media/Headshots/aaron.png" alt="Aaron Wang"></div>
+                <div class="member-name">Aaron Wang</div>
+                <div class="member-title">Director of Outreach</div>
+                <div class="member-school">Vanderbilt University</div>
+            </div>
+            <div class="team-member">
+                <div class="headshot"><img src="Media/Headshots/update5/anibellows.jpeg" alt="Ani Bellows"></div>
+                <div class="member-name">Ani Bellows</div>
+                <div class="member-title">Head of Marketing</div>
+                <div class="member-school">University of Texas at Austin</div>
+            </div>
+            <div class="team-member">
+                <div class="headshot"><img src="Media/Headshots/update2/harpavat2.png" alt="Anika Harpavat"></div>
+                <div class="member-name">Anika Harpavat</div>
+                <div class="member-school">Stanford University</div>
+            </div>
+            <div class="team-member">
+                <div class="headshot"><img src="Media/Headshots/update1/aarav.png" alt="AM"></div>
+                <div class="member-name">Aarav Mahendru</div>
+                <div class="member-school">The University of Texas at Austin</div>
+            </div>
+            <div class="team-member">
+                <div class="headshot"><img src="Media/Headshots/ian.jpg" alt="Ian"></div>
+                <div class="member-name">Ian Ngo</div>
+                <div class="member-school">University of Notre Dame</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
     <!-- ── EXECUTIVE BOARD ───────────────────────── -->
     <section class="team-section">
         <h2 class="section-title">Executive Board</h2>
@@ -438,11 +486,6 @@
                 <div class="member-name">Diego Pruneda</div>
                 <div class="member-school">Strake Jesuit College Preparatory</div>
             </div>
-            <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/update2/estrada.jpg" alt="Samuel Estrada"></div>
-                <div class="member-name">Samuel Estrada</div>
-                <div class="member-school">Strake Jesuit College Preparatory</div>
-            </div>
         </div>
     </section>
 
@@ -454,10 +497,9 @@
         <div class="volunteers-grid">
 
             <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/aaron.png" alt="Aaron Wang"></div>
-                <div class="member-name">Aaron Wang</div>
-                <div class="member-title">Director of Outreach</div>
-                <div class="member-school">Vanderbilt University</div>
+                <div class="headshot"><img src="Media/Headshots/update2/estrada.jpg" alt="Samuel Estrada"></div>
+                <div class="member-name">Samuel Estrada</div>
+                <div class="member-school">Strake Jesuit College Preparatory</div>
             </div>
             <div class="team-member">
                 <div class="headshot"><img src="Media/Headshots/update1/parrie.png" alt="Parrie"></div>
@@ -470,21 +512,11 @@
                 <div class="member-school">The University of Michigan</div>
             </div>
             <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/ian.jpg" alt="Ian"></div>
-                <div class="member-name">Ian Ngo</div>
-                <div class="member-school">University of Notre Dame</div>
-            </div>
-            <div class="team-member">
                 <div class="headshot"><img src="Media/Headshots/rodri.jpeg" alt="Rodri"></div>
                 <div class="member-name">Rodri Celma</div>
                 <div class="member-school">Strake Jesuit College Preparatory</div>
             </div>
 
-            <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/update1/aarav.png" alt="AM"></div>
-                <div class="member-name">Aarav Mahendru</div>
-                <div class="member-school">The University of Texas at Austin</div>
-            </div>
             <div class="team-member">
                 <div class="headshot"><img src="Media/Headshots/update2/roger.png" alt="Roger Li"></div>
                 <div class="member-name">Roger Li</div>
@@ -494,17 +526,6 @@
                 <div class="headshot"><img src="Media/Headshots/update3/purdueguy.jpeg" alt="Gabriel Fernandes"></div>
                 <div class="member-name">Gabriel Fernandes</div>
                 <div class="member-school">Purdue University</div>
-            </div>
-            <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/update2/harpavat2.png" alt="Anika Harpavat"></div>
-                <div class="member-name">Anika Harpavat</div>
-                <div class="member-school">Stanford University</div>
-            </div>
-            <div class="team-member">
-                <div class="headshot"><img src="Media/Headshots/update5/anibellows.jpeg" alt="Ani Bellows"></div>
-                <div class="member-name">Ani Bellows</div>
-                <div class="member-title">Head of Marketing</div>
-                <div class="member-school">University of Texas at Austin</div>
             </div>
             <div class="team-member">
                 <div class="headshot"><img src="Media/Headshots/update2/mac.png" alt="Mac Stratton"></div>
@@ -763,7 +784,7 @@
         document.querySelectorAll('.team-member, .section-title').forEach(el => observer.observe(el));
 
         // Stagger team members within each grid
-        document.querySelectorAll('.founder-grid, .codirectors-grid, .board-grid, .volunteers-grid').forEach(grid => {
+        document.querySelectorAll('.founder-grid, .directors-grid, .codirectors-grid, .board-grid, .volunteers-grid').forEach(grid => {
             grid.querySelectorAll('.team-member').forEach((member, i) => {
                 member.style.transitionDelay = `${i * 0.06}s`;
             });
